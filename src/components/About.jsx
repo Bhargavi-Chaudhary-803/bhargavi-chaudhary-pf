@@ -16,7 +16,7 @@ export default function About() {
         </div>
 
         <div className="flex justify-center items-baseline gap-5 mt-[-20px]">
-          <span className="font-inter text-[18px] font-semibold tracking-[-1px]">
+          <span className="font-inter text-[20px] font-semibold tracking-[-1px]">
             Currently in Jaipur, India
           </span>
         </div>
