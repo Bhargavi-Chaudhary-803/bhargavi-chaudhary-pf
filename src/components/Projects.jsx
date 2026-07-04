@@ -20,7 +20,7 @@ const projects = [
     tagline: "AI pre-consultation healthcare assistant",
     description:
       "A RAG-powered chatbot that structures patient intake using the OPQRST clinical framework, so every visit starts with organized history instead of a blank form.",
-    github: "https://github.com/your-username/veritas",
+    github: "https://github.com/Anmol-Srivastava-073/veritaschat",
     live: "https://veritas-demo.vercel.app",
     image: "/p1.png",
   },
@@ -30,18 +30,18 @@ const projects = [
     description:
       "A waste-classification platform using PyTorch and OpenCV to sort waste in real time, built to make smart-city waste management measurable instead of guesswork.",
     
-    github: "https://github.com/your-username/verdian",
+    github: "https://github.com/Bhargavi-Chaudhary-803/Verdian",
     live: "https://verdian-demo.vercel.app",
     image: "/p3.png",
   },
   {
-    title: "Project Three",
-    tagline: "Add a short one-line tagline here",
+    title: "Manipal UniNav",
+    tagline: "A website specially designed for MUJ students to navigate through their campus with ease.",
     description:
       "Replace this with a one to two sentence description: what the project does, who it's for, and the problem it solves.",
     
-    github: "https://github.com/your-username/project-three",
-    live: "https://project-three-demo.vercel.app",
+    github: "https://github.com/Anmol-Srivastava-073/manipalmap",
+    live: "https://manipalmap.vercel.app/",
     image: "/p2.png",
   },
 ];
@@ -157,10 +157,10 @@ export default function Projects() {
       <div className="max-w-7xl mx-auto">
         
         <div className="flex justify-center items-baseline gap-5">
-          <span className="font-inter text-[95px] md:text-[115px] font-semibold tracking-[-2px] text-black">
+          <span className="font-inter text-[95px] md:text-[95px] font-semibold tracking-[-2px] text-black">
             Projects I've
           </span>
-          <span className="font-noto text-[80px] md:text-[100px] font-light italic leading-none tracking-[-3px] scale-y-[1.15] origin-bottom inline-block text-black">
+          <span className="font-noto text-[80px] md:text-[80px] font-light italic leading-none tracking-[-3px] scale-y-[1.15] origin-bottom inline-block text-black">
             built
           </span>
         </div>
