@@ -79,7 +79,7 @@ export default function Skills() {
                   key={tech.name}
                   className="relative cursor-pointer group"
                 >
-                  <div className="w-22 h-22 rounded-full bg-black border border-neutral-800 flex items-center justify-center shadow-xl transition-all duration-300 ease-out group-hover:scale-110 group-hover:border-white/40 group-hover:shadow-[0_0_25px_4px_rgba(255,255,255,0.45)]">
+                  <div className="w-16 h-16 rounded-full bg-black border border-neutral-800 flex items-center justify-center shadow-xl transition-all duration-300 ease-out group-hover:scale-110 group-hover:border-white/40 group-hover:shadow-[0_0_25px_4px_rgba(255,255,255,0.45)]">
                     {tech.svgPath}
                   </div>
                 </div>
@@ -93,7 +93,7 @@ export default function Skills() {
                   key={tech.name}
                   className="relative cursor-pointer group"
                 >
-                  <div className="w-22 h-22 rounded-full bg-black border border-neutral-800 flex items-center justify-center shadow-xl transition-all duration-300 ease-out group-hover:scale-110 group-hover:border-white/40 group-hover:shadow-[0_0_25px_4px_rgba(255,255,255,0.45)]">
+                  <div className="w-16 h-16 rounded-full bg-black border border-neutral-800 flex items-center justify-center shadow-xl transition-all duration-300 ease-out group-hover:scale-110 group-hover:border-white/40 group-hover:shadow-[0_0_25px_4px_rgba(255,255,255,0.45)]">
                     {tech.svgPath}
                   </div>
                 </div>
