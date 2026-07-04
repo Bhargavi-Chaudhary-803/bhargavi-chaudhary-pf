@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import { Mail, ArrowUpRight } from "lucide-react";
 
-// EDIT ME: your actual contact details / links
 const EMAIL = "bhargavichaudhary803@gmail.com";
 const GITHUB_URL = "https://github.com/Bhargavi-Chaudhary-803";
 const GITHUB_HANDLE = "Bhargavi-Chaudhary-803";
@@ -73,21 +72,19 @@ export default function Contact() {
       <div className="max-w-5xl mx-auto relative">
         {/* Header — mirrors the About / Projects type pairing */}
         <div className="flex justify-center items-baseline gap-4 flex-wrap">
-          <span className="font-inter text-[56px] md:text-[72px] font-semibold tracking-[-2px] text-black">
+          <span className="font-inter text-[95px] md:text-[95px] font-semibold tracking-[-2px] text-black">
             Get In
           </span>
-          <span className="font-noto text-[52px] md:text-[68px] font-light italic leading-none tracking-[-2px] scale-y-[1.15] origin-bottom inline-block text-black">
+          <span className="font-noto text-[80px] md:text-[80px] font-light italic leading-none tracking-[-2px] scale-y-[1.15] origin-bottom inline-block text-black">
             Touch!
           </span>
         </div>
-        <p className="text-center font-inter text-[15px] md:text-[16px] text-black/50 mt-4 max-w-lg mx-auto leading-relaxed">
+        <span className="font-inter text-[20px] font-semibold tracking-[-1px]">
           Whether it's an opportunity, a collaboration, or just a conversation,
           I'm always open. Pick your preferred channel.
-        </p>
+        </span>
 
-        {/* EDIT ME: point this at your phone doodle asset. Positioned
-            to sit off to the right like in the mockup, hidden on
-            smaller screens so it never collides with the form. */}
+        
         <div className="hidden lg:block absolute -top-4 -right-4 w-[90px] h-[220px] opacity-90 pointer-events-none">
           <Image
             src="/phone-doodle.png"
