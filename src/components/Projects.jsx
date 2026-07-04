@@ -155,7 +155,7 @@ export default function Projects() {
   return (
     <section id="projects" className="px-6 pt-24 pb-32 bg-transparent">
       <div className="max-w-7xl mx-auto">
-        {/* Header — mirrors the About section's type pairing */}
+        
         <div className="flex justify-center items-baseline gap-5">
           <span className="font-inter text-[72px] md:text-[92px] font-semibold tracking-[-2px] text-black">
             Projects I've
