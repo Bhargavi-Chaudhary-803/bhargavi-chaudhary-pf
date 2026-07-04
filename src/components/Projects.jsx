@@ -43,7 +43,7 @@ const projects = [
     tech: ["RAG", "LLM", "Python", "FastAPI"],
     github: "https://github.com/your-username/veritas",
     live: "https://veritas-demo.vercel.app",
-    image: "", // e.g. "/videos/veritas-demo.mp4"
+    image: "public/p1.png",
   },
   {
     id: "02",
@@ -54,7 +54,7 @@ const projects = [
     tech: ["PyTorch", "OpenCV", "Python"],
     github: "https://github.com/your-username/verdian",
     live: "https://verdian-demo.vercel.app",
-    image: "", // e.g. "/images/verdian-demo.jpg"
+    image: "public/p2.png",
   },
   {
     id: "03",
@@ -65,7 +65,7 @@ const projects = [
     tech: ["React", "TypeScript", "Next.js"],
     github: "https://github.com/your-username/project-three",
     live: "https://project-three-demo.vercel.app",
-    image: "",
+    image: "public/p3.png",
   },
 ];
 
