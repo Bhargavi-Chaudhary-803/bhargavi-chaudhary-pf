@@ -7,21 +7,21 @@ export default function Experience() {
 
         {/* 1. Left aligned: "Hi! I am" */}
         <div className="flex justify-center items-baseline gap-5 mt-8">
-          <span className="font-inter text-[115px] font-semibold tracking-[-2px]">
+          <span className="font-inter text-[95px] font-semibold tracking-[-2px]">
             Where I’ve
           </span>
-          <span className="font-noto text-[100px] font-light leading-none italic tracking-[-4px] scale-y-[1.2] origin-bottom inline-block">
+          <span className="font-noto text-[80px] font-light leading-none italic tracking-[-4px] scale-y-[1.2] origin-bottom inline-block">
             worked
           </span>
         </div>
 
         <div className="flex justify-center items-baseline gap-5 mt-[-20px]">
-          <span className="font-inter text-[24px] font-semibold tracking-[-1px]">
+          <span className="font-inter text-[20px] font-semibold tracking-[-1px]">
             A timeline of the teams, projects, and communities I've worked with.
           </span>
         </div>
 
-        <div className="max-w-5xl mx-auto space-y-[16px] p-19 font-inter text-black text-[25px] leading-snug tracking-[-1px] mt-[-35px]">
+        <div className="max-w-5xl mx-auto space-y-[16px] p-19 font-inter text-black text-[22px] leading-snug tracking-[-1px] mt-[-35px]">
   {/* Item 1 */}
   <div className="flex justify-between items-start">
     <div>
