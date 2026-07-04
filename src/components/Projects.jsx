@@ -20,7 +20,6 @@ const projects = [
     tagline: "AI pre-consultation healthcare assistant",
     description:
       "A RAG-powered chatbot that structures patient intake using the OPQRST clinical framework, so every visit starts with organized history instead of a blank form.",
-    tech: ["RAG", "LLM", "Python", "FastAPI"],
     github: "https://github.com/your-username/veritas",
     live: "https://veritas-demo.vercel.app",
     image: "public/p1.png", // e.g. "/images/veritas.png"
@@ -30,7 +29,7 @@ const projects = [
     tagline: "Smart waste management, powered by vision",
     description:
       "A waste-classification platform using PyTorch and OpenCV to sort waste in real time, built to make smart-city waste management measurable instead of guesswork.",
-    tech: ["PyTorch", "OpenCV", "Python"],
+    
     github: "https://github.com/your-username/verdian",
     live: "https://verdian-demo.vercel.app",
     image: "public/p2.png", // e.g. "/images/verdian.png"
@@ -40,7 +39,7 @@ const projects = [
     tagline: "Add a short one-line tagline here",
     description:
       "Replace this with a one to two sentence description: what the project does, who it's for, and the problem it solves.",
-    tech: ["React", "TypeScript", "Next.js"],
+    
     github: "https://github.com/your-username/project-three",
     live: "https://project-three-demo.vercel.app",
     image: "public/p3.png",
@@ -76,9 +75,6 @@ function TechBadge({ label }) {
   );
 }
 
-// lucide-react dropped brand/logo icons (GitHub, Twitter, etc.) in
-// recent versions, so this is a small hand-drawn stand-in that
-// matches the stroke style of the rest of the icon set.
 function GithubIcon({ size = 16, className = "" }) {
   return (
     <svg
@@ -128,13 +124,7 @@ function ProjectCard({ project }) {
 
         <p className="font-inter text-[15px] leading-relaxed text-black/70 mt-4">
           {project.description}
-        </p>
-
-        <div className="flex flex-wrap gap-1.5 mt-5">
-          {project.tech.map((t) => (
-            <TechBadge key={t} label={t} />
-          ))}
-        </div>
+        </p>        
 
         <div className="flex items-center gap-2 mt-auto pt-6">
           <a
