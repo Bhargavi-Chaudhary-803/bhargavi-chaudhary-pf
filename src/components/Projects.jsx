@@ -22,7 +22,7 @@ const projects = [
       "A RAG-powered chatbot that structures patient intake using the OPQRST clinical framework, so every visit starts with organized history instead of a blank form.",
     github: "https://github.com/your-username/veritas",
     live: "https://veritas-demo.vercel.app",
-    image: "https://github.com/Bhargavi-Chaudhary-803/bhargavi-chaudhary-pf/blob/main/public/p1.png", // e.g. "/images/veritas.png"
+    image: "https://github.com/Bhargavi-Chaudhary-803/bhargavi-chaudhary-pf/blob/main/public/p1.png?raw=true", // e.g. "/images/veritas.png"
   },
   {
     title: "Verdian",
