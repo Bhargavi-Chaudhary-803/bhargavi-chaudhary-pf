@@ -7,10 +7,10 @@ export default function About() {
 
         {/* 1. Left aligned: "Hi! I am" */}
         <div className="flex justify-center items-baseline gap-5 mt-8">
-          <span className="font-inter text-[85px] font-semibold tracking-[-2px]">
+          <span className="font-inter text-[95px] font-semibold tracking-[-2px]">
             About
           </span>
-          <span className="font-noto text-[70px] font-light leading-none italic tracking-[-4px] scale-y-[1.2] origin-bottom inline-block">
+          <span className="font-noto text-[80px] font-light leading-none italic tracking-[-4px] scale-y-[1.2] origin-bottom inline-block">
             Me
           </span>
         </div>
