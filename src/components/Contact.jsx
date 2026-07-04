@@ -7,7 +7,7 @@ import { Mail, ArrowUpRight } from "lucide-react";
 const EMAIL = "bhargavichaudhary803@gmail.com";
 const GITHUB_URL = "https://github.com/Bhargavi-Chaudhary-803";
 const GITHUB_HANDLE = "Bhargavi-Chaudhary-803";
-const LINKEDIN_URL = "https://linkedin.com/in/your-linkedin-handle";
+const LINKEDIN_URL = "https://www.linkedin.com/in/bhargavi-chaudhary-55384936a/";
 const LINKEDIN_NAME = "Bhargavi Chaudhary";
 
 
@@ -56,9 +56,7 @@ export default function Contact() {
   const handleChange = (e) =>
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
-  // Zero-backend default: opens the visitor's email client with the
-  // message prefilled. Swap this for Formspree / EmailJS / Resend
-  // later if you want messages to send without leaving the page.
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     const subject = encodeURIComponent(`Portfolio message from ${form.name || "someone"}`);
@@ -81,7 +79,7 @@ export default function Contact() {
         </div>
         <span className="font-inter text-[20px] font-semibold tracking-[-1px]">
           Whether it's an opportunity, a collaboration, or just a conversation,
-          I'm always open. Pick your preferred channel.
+          I'm always open for a fresh discussion! Pick your preferred channel.
         </span>
 
         
