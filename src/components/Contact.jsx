@@ -83,7 +83,7 @@ export default function Contact() {
         </span>
 
 
-        <div className="hidden lg:block absolute top-1/2 right-6 -translate-y-1/2 w-[240px] h-[240px] opacity-90 pointer-events-none">
+        <div className="hidden lg:block absolute top-1/2 right-12 -translate-y-1/2 w-[240px] h-[240px] opacity-90 pointer-events-none">
           <Image src="/g5.png" alt="" fill className="object-contain" />
         </div>
 
