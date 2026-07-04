@@ -32,7 +32,7 @@ const projects = [
     
     github: "https://github.com/your-username/verdian",
     live: "https://verdian-demo.vercel.app",
-    image: "/p2.png",
+    image: "/p3.png",
   },
   {
     title: "Project Three",
@@ -42,7 +42,7 @@ const projects = [
     
     github: "https://github.com/your-username/project-three",
     live: "https://project-three-demo.vercel.app",
-    image: "/p3.png",
+    image: "/p2.png",
   },
 ];
 
@@ -157,15 +157,15 @@ export default function Projects() {
       <div className="max-w-7xl mx-auto">
         
         <div className="flex justify-center items-baseline gap-5">
-          <span className="font-inter text-[105px] md:text-[115px] font-semibold tracking-[-2px] text-black">
+          <span className="font-inter text-[95px] md:text-[115px] font-semibold tracking-[-2px] text-black">
             Projects I've
           </span>
-          <span className="font-noto text-[90px] md:text-[100px] font-light italic leading-none tracking-[-3px] scale-y-[1.15] origin-bottom inline-block text-black">
+          <span className="font-noto text-[80px] md:text-[100px] font-light italic leading-none tracking-[-3px] scale-y-[1.15] origin-bottom inline-block text-black">
             built
           </span>
         </div>
         <div className="flex justify-center gap-5 mt-[-20px] mb-16">
-          <span className="font-inter text-[24px] font-semibold tracking-[-1px]">
+          <span className="font-inter text-[20px] font-semibold tracking-[-1px]">
             My Production-ready projects that solve real problems.
           </span>
         </div>
