@@ -21,7 +21,7 @@ export default function Experience() {
           </span>
         </div>
 
-        <div className="max-w-5xl mx-auto space-y-[16px] p-19 font-inter text-black text-[22px] leading-snug tracking-[-1px] mt-[-35px]">
+        <div className="max-w-5xl mx-auto space-y-[12px] p-19 font-inter text-black text-[22px] leading-snug tracking-[-1px] mt-[-35px]">
   {/* Item 1 */}
   <div className="flex justify-between items-start">
     <div>
