@@ -38,7 +38,7 @@ const projects = [
     title: "Manipal UniNav",
     tagline: "A website specially designed for MUJ students to navigate through their campus with ease.",
     description:
-      "UniWay is a smart campus navigation platform for MUJ students and visitors. It helps users quickly find buildings, discover the shortest routes, and explore campus facilities without getting lost",
+      "UniNav is a smart campus navigation platform for MUJ students and visitors. It helps users quickly find buildings, discover the shortest routes, and explore campus facilities without getting lost",
     
     github: "https://github.com/Anmol-Srivastava-073/manipalmap",
     live: "https://manipalmap.vercel.app/",
