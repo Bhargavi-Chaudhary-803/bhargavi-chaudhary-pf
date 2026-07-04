@@ -85,7 +85,7 @@ export default function Contact() {
         
         <div className="hidden lg:block absolute -top-4 -right-4 w-[90px] h-[220px] opacity-90 pointer-events-none">
           <Image
-            src="/phone-doodle.png"
+            src="/g5.png"
             alt=""
             fill
             className="object-contain"
