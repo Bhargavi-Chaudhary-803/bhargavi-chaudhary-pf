@@ -164,7 +164,7 @@ export default function Projects() {
             Built
           </span>
         </div>
-        <div className="flex justify-center gap-5 mt-[-14px] mb-16">
+        <div className="flex justify-center gap-5 mt-[-8px] mb-16">
           <span className="font-inter text-[20px] font-semibold tracking-[-1px] text-black">
             My Production-ready projects that solve real problems.
           </span>
