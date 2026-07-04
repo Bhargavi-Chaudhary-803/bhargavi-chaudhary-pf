@@ -33,14 +33,6 @@ function GithubIcon({ size = 16, className = "" }) {
   );
 }
 
-// ────────────────────────────────────────────────────────────
-// EDIT ME: swap in your real project info, links, and videos.
-// video: short muted looping demo clip (mp4, ~5–10s is plenty
-// since it also plays small as a thumbnail). Leave "" for a
-// placeholder frame.
-// tech: any string works — icon falls back to a generic glyph
-// if it's not in TECH_ICONS below.
-// ────────────────────────────────────────────────────────────
 const projects = [
   {
     id: "01",
@@ -51,7 +43,7 @@ const projects = [
     tech: ["RAG", "LLM", "Python", "FastAPI"],
     github: "https://github.com/your-username/veritas",
     live: "https://veritas-demo.vercel.app",
-    video: "", // e.g. "/videos/veritas-demo.mp4"
+    image: "", // e.g. "/videos/veritas-demo.mp4"
   },
   {
     id: "02",
@@ -62,7 +54,7 @@ const projects = [
     tech: ["PyTorch", "OpenCV", "Python"],
     github: "https://github.com/your-username/verdian",
     live: "https://verdian-demo.vercel.app",
-    video: "", // e.g. "/videos/verdian-demo.mp4"
+    image: "", // e.g. "/images/verdian-demo.jpg"
   },
   {
     id: "03",
@@ -73,7 +65,7 @@ const projects = [
     tech: ["React", "TypeScript", "Next.js"],
     github: "https://github.com/your-username/project-three",
     live: "https://project-three-demo.vercel.app",
-    video: "",
+    image: "",
   },
 ];
 
@@ -111,7 +103,7 @@ function Thumb({ project, size = "small" }) {
   const dims =
     size === "small" ? "w-[104px] h-[68px]" : "w-full aspect-video max-w-[420px]";
 
-  if (!project.video) {
+  if (!project.image) {
     return (
       <div
         className={`${dims} shrink-0 rounded-xl bg-black flex items-center justify-center border border-dashed border-white/20`}
@@ -125,7 +117,7 @@ function Thumb({ project, size = "small" }) {
     <div className={`${dims} shrink-0 rounded-xl overflow-hidden bg-black`}>
       <video
         ref={videoRef}
-        src={project.video}
+        src={project.image}
         autoPlay
         loop
         muted
