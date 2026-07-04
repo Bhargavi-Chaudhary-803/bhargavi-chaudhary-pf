@@ -56,7 +56,7 @@ export default function Contact() {
   const handleChange = (e) =>
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const subject = encodeURIComponent(`Portfolio message from ${form.name || "someone"}`);
@@ -82,14 +82,9 @@ export default function Contact() {
           I'm always open for a fresh discussion! Pick your preferred channel.
         </span>
 
-        
-        <div className="hidden lg:block absolute -top-4 -right-4 w-[90px] h-[220px] opacity-90 pointer-events-none">
-          <Image
-            src="/g5.png"
-            alt=""
-            fill
-            className="object-contain"
-          />
+
+        <div className="hidden lg:block absolute top-1/2 right-6 -translate-y-1/2 w-[240px] h-[240px] opacity-90 pointer-events-none">
+          <Image src="/g5.png" alt="" fill className="object-contain" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mt-16">
