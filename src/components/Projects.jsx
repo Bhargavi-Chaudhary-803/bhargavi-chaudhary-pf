@@ -22,7 +22,7 @@ const projects = [
       "A RAG-powered chatbot that structures patient intake using the OPQRST clinical framework, so every visit starts with organized history instead of a blank form.",
     github: "https://github.com/your-username/veritas",
     live: "https://veritas-demo.vercel.app",
-    image: "public/p1.png", // e.g. "/images/veritas.png"
+    image: "https://github.com/Bhargavi-Chaudhary-803/bhargavi-chaudhary-pf/blob/main/public/p1.png", // e.g. "/images/veritas.png"
   },
   {
     title: "Verdian",
@@ -32,7 +32,7 @@ const projects = [
     
     github: "https://github.com/your-username/verdian",
     live: "https://verdian-demo.vercel.app",
-    image: "public/p2.png", // e.g. "/images/verdian.png"
+    image: "https://github.com/Bhargavi-Chaudhary-803/bhargavi-chaudhary-pf/blob/main/public/p2.png", // e.g. "/images/verdian.png"
   },
   {
     title: "Project Three",
@@ -42,7 +42,7 @@ const projects = [
     
     github: "https://github.com/your-username/project-three",
     live: "https://project-three-demo.vercel.app",
-    image: "public/p3.png",
+    image: "https://github.com/Bhargavi-Chaudhary-803/bhargavi-chaudhary-pf/blob/main/public/p3.png",
   },
 ];
 
