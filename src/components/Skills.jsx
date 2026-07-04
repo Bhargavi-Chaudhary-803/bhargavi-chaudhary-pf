@@ -32,7 +32,7 @@ export default function Skills() {
   ];
 
   return (
-    <section className="min-h-screen px-6 pt-16 bg-transparent">
+    <section className="min-h-screen px-6 pt-[-16] bg-transparent">
       <div className="max-w-7xl mx-auto mt-[50px]">
 
         {/* 1. Left aligned: "Hi! I am" */}
