@@ -7,28 +7,28 @@ export default function About() {
 
         {/* 1. Left aligned: "Hi! I am" */}
         <div className="flex justify-center items-baseline gap-5 mt-8">
-          <span className="font-inter text-[115px] font-semibold tracking-[-2px]">
+          <span className="font-inter text-[85px] font-semibold tracking-[-2px]">
             About
           </span>
-          <span className="font-noto text-[100px] font-light leading-none italic tracking-[-4px] scale-y-[1.2] origin-bottom inline-block">
+          <span className="font-noto text-[70px] font-light leading-none italic tracking-[-4px] scale-y-[1.2] origin-bottom inline-block">
             Me
           </span>
         </div>
 
         <div className="flex justify-center items-baseline gap-5 mt-[-20px]">
-          <span className="font-inter text-[24px] font-semibold tracking-[-1px]">
+          <span className="font-inter text-[18px] font-semibold tracking-[-1px]">
             Currently in Jaipur, India
           </span>
         </div>
 
         <div className="flex justify-center items-center gap-2 mt-4">
-          <span className="font-inter text-[38px] font-normal tracking-[-2px] text-center leading-tight">
+          <span className="font-inter text-[32px] font-normal tracking-[-2px] text-center leading-tight">
             “Crafting scalable web applications, intuitive user experiences, <br />digital  solutions & many more...”
           </span>
         </div>
 
         <div className="flex justify-center items-center gap-2 mt-6">
-          <span className="font-inter text-[28px] font-regular tracking-[-1.5px] text-center leading-tight">
+          <span className="font-inter text-[26px] font-regular tracking-[-1.5px] text-center leading-tight">
             A CS engineering student at Manipal University Jaipur, building at the <br /> intersection of clean engineering and intentional design. I care deeply about <br /> how things are made, not just that they work, but that they feel right.
           </span>
         </div>
