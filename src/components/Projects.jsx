@@ -165,8 +165,8 @@ export default function Projects() {
           </span>
         </div>
         <div className="flex justify-center mt-2 mb-16">
-          <span className="font-inter text-[16px] tracking-[0.5px] text-black/40">
-            Three things I've built.
+          <span className="font-inter text-[24px] font-semibold tracking-[-1px]">
+            My Production-ready projects that solve real problems.
           </span>
         </div>
 
