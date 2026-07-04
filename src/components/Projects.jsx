@@ -158,10 +158,10 @@ export default function Projects() {
         {/* Header — mirrors the About section's type pairing */}
         <div className="flex justify-center items-baseline gap-5">
           <span className="font-inter text-[72px] md:text-[92px] font-semibold tracking-[-2px] text-black">
-            Selected
+            Projects I've
           </span>
           <span className="font-noto text-[64px] md:text-[80px] font-light italic leading-none tracking-[-3px] scale-y-[1.15] origin-bottom inline-block text-black">
-            Works
+            built
           </span>
         </div>
         <div className="flex justify-center mt-2 mb-16">
