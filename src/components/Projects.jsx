@@ -157,10 +157,10 @@ export default function Projects() {
       <div className="max-w-7xl mx-auto">
         
         <div className="flex justify-center items-baseline gap-5">
-          <span className="font-inter text-[105px] md:text-[92px] font-semibold tracking-[-2px] text-black">
+          <span className="font-inter text-[105px] md:text-[115px] font-semibold tracking-[-2px] text-black">
             Projects I've
           </span>
-          <span className="font-noto text-[90px] md:text-[80px] font-light italic leading-none tracking-[-3px] scale-y-[1.15] origin-bottom inline-block text-black">
+          <span className="font-noto text-[90px] md:text-[100px] font-light italic leading-none tracking-[-3px] scale-y-[1.15] origin-bottom inline-block text-black">
             built
           </span>
         </div>
