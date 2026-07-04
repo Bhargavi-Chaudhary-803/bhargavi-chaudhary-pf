@@ -77,7 +77,7 @@ export default function Contact() {
             Touch!
           </span>
         </div>
-        <span className="font-inter text-[20px] font-semibold tracking-[-1px]">
+        <span className="font-inter justify-center text-[20px] font-semibold tracking-[-1px]">
           Whether it's an opportunity, a collaboration, or just a conversation,
           I'm always open for a fresh discussion! Pick your preferred channel.
         </span>
