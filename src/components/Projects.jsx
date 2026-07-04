@@ -21,7 +21,7 @@ const projects = [
     description:
       "A RAG-powered chatbot that structures patient intake using the OPQRST clinical framework, so every visit starts with organized history instead of a blank form.",
     github: "https://github.com/Anmol-Srivastava-073/veritaschat",
-    live: "https://veritas-demo.vercel.app",
+    live: "https://veritas-healthbot.vercel.app/",
     image: "/p1.png",
   },
   {
@@ -31,14 +31,14 @@ const projects = [
       "A waste-classification platform using PyTorch and OpenCV to sort waste in real time, built to make smart-city waste management measurable instead of guesswork.",
     
     github: "https://github.com/Bhargavi-Chaudhary-803/Verdian",
-    live: "https://verdian-demo.vercel.app",
+    live: "https://verdian-wastesystem.vercel.app/",
     image: "/p3.png",
   },
   {
     title: "Manipal UniNav",
     tagline: "A website specially designed for MUJ students to navigate through their campus with ease.",
     description:
-      "Replace this with a one to two sentence description: what the project does, who it's for, and the problem it solves.",
+      "UniWay is a smart campus navigation platform for MUJ students and visitors. It helps users quickly find buildings, discover the shortest routes, and explore campus facilities without getting lost",
     
     github: "https://github.com/Anmol-Srivastava-073/manipalmap",
     live: "https://manipalmap.vercel.app/",
@@ -68,7 +68,7 @@ const DEFAULT_TECH_ICON = Code2;
 function TechBadge({ label }) {
   const Icon = TECH_ICONS[label] || DEFAULT_TECH_ICON;
   return (
-    <span className="flex items-center gap-1.5 font-inter text-[11px] uppercase tracking-wide border border-black/15 rounded-full pl-2 pr-2.5 py-1 text-black/60">
+    <span className="flex items-center gap-1.5 font-inter text-[11px] uppercase tracking-wide border border-black/15 rounded-full pl-2 pr-2.5 py-1 text-black">
       <Icon size={12} strokeWidth={1.75} />
       {label}
     </span>
@@ -115,14 +115,14 @@ function ProjectCard({ project }) {
 
       {/* Content */}
       <div className="flex flex-col flex-1 p-6">
-        <h3 className="font-inter text-[22px] font-medium tracking-[-0.5px] text-black">
+        <h3 className="font-inter text-[22px] font-bold tracking-[-0.5px] text-black">
           {project.title}
         </h3>
         <p className="font-inter text-[13px] text-black/40 mt-1">
           {project.tagline}
         </p>
 
-        <p className="font-inter text-[15px] leading-relaxed text-black/70 mt-4">
+        <p className="font-inter text-[15px] leading-relaxed text-black mt-4">
           {project.description}
         </p>        
 
@@ -132,7 +132,7 @@ function ProjectCard({ project }) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${project.title} on GitHub`}
-            className="flex items-center justify-center w-9 h-9 rounded-full border border-black/15 text-black/60 transition-colors duration-150 hover:bg-black hover:text-white hover:border-black"
+            className="flex items-center justify-center w-9 h-9 rounded-full border border-black/15 text-black transition-colors duration-150 hover:bg-black hover:text-white hover:border-black"
           >
             <GithubIcon size={15} />
           </a>
@@ -141,7 +141,7 @@ function ProjectCard({ project }) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${project.title} live demo`}
-            className="flex items-center justify-center w-9 h-9 rounded-full border border-black/15 text-black/60 transition-colors duration-150 hover:bg-black hover:text-white hover:border-black"
+            className="flex items-center justify-center w-9 h-9 rounded-full border border-black/15 text-black transition-colors duration-150 hover:bg-black hover:text-white hover:border-black"
           >
             <ArrowUpRight size={15} />
           </a>
@@ -164,8 +164,8 @@ export default function Projects() {
             built
           </span>
         </div>
-        <div className="flex justify-center gap-5 mt-[-20px] mb-16">
-          <span className="font-inter text-[20px] font-semibold tracking-[-1px]">
+        <div className="flex justify-center gap-5 mt-[-14px] mb-16">
+          <span className="font-inter text-[20px] font-semibold tracking-[-1px] text-black">
             My Production-ready projects that solve real problems.
           </span>
         </div>
