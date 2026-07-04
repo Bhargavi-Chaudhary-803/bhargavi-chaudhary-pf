@@ -161,7 +161,7 @@ export default function Projects() {
             Projects I've
           </span>
           <span className="font-noto text-[80px] md:text-[80px] font-light italic leading-none tracking-[-3px] scale-y-[1.15] origin-bottom inline-block text-black">
-            built
+            Built
           </span>
         </div>
         <div className="flex justify-center gap-5 mt-[-14px] mb-16">
