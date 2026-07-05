@@ -106,7 +106,7 @@ export default function Contact() {
           Pick your preferred channel.
         </span>
 
-        <div className="hidden lg:block absolute top-1/2 right-[calc(-50vw+50%)] -translate-y-1/2 w-[270px] h-[270px] opacity-90 pointer-events-none">
+        <div className="hidden lg:block absolute top-1/2 right-[calc(-53vw+50%)] -translate-y-1/2 w-[270px] h-[270px] opacity-90 pointer-events-none">
           <Image src="/g5.png" alt="" fill className="object-contain" />
         </div>
 
