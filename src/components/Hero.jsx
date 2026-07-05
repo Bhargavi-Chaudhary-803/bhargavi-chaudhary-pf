@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="min-h-screen px-6 pt-16 bg-transparent">
-      <div className="max-w-7xl mx-auto mt-[50px]">
+    <section className="min-h-screen px-6 pt-16 bg-transparent relative">
+      <div className="max-w-7xl mx-auto mt-[50px] relative">
 
         {/* 1. Left aligned: "Hi! I am" */}
         <div className="flex items-baseline gap-2 mt-8">
@@ -17,10 +17,10 @@ export default function Hero() {
 
         {/* Added -ml-2 to the parent container */}
         <div className="flex items-baseline gap-5 -mt-5 -ml-1">
-          <span className="font-inter text-[118px] font-semibold leading-none tracking-[-4px]">
+          <span className="font-inter text-[105px] font-semibold leading-none tracking-[-4px]">
             Bhargavi
           </span>
-          <span className="font-noto text-[116px] font-light leading-none italic tracking-[-0.04em] scale-y-110 origin-bottom">
+          <span className="font-noto text-[102px] font-light leading-none italic tracking-[-0.04em] scale-y-110 origin-bottom">
             Chaudhary
           </span>
         </div>
@@ -28,30 +28,26 @@ export default function Hero() {
         {/* 3. Spacing */}
         <div className="h-12" />
 
-        <div className="text-left flex flex-col">
-          <p className="font-inter text-[30px] font-regular tracking-[-1px] leading-none">
-            Web Developer / UI.UX Designer /
+        {/* Left column content wrapper to separate text flow from absolute graphics */}
+        <div className="max-w-2xl flex flex-col">
+          <p className="font-inter text-[30px] font-regular tracking-[-1px] leading-none text-left">
+            Web Developer / UI.UX Designer / Visual Identity / Software Developer
           </p>
-          <p className="font-inter text-[30px] font-regular tracking-[-1px] leading-none mt-0.5">
-            Visual Identity / Software Developer
+          
+          <p className="font-inter text-[25px] font-medium mt-10 tracking-[-1px] text-left">
+            I build seamless digital experiences & create products with clean design.
           </p>
-        </div>
 
-        <div className="text-left">
-          <p className="font-inter text-[25px] font-medium mt-10 tracking-[-1px]">
-            I build seemless digital experiences & create products with clean design.
-          </p>
-        </div>
-
-        <div className="text-left">
-          <p className="font-inter text-[30px] font-bold mt-10 tracking-[-1px]">
-            <a href="mailto:bhargavichaudhary803@gmail.com">
+          {/* Adjusted ONLY this margin to shift it down without affecting things below */}
+          <p className="font-inter text-[30px] font-bold mt-10 tracking-[-1px] text-left">
+            <a href="mailto:bhargavichaudhary803@gmail.com" className="hover:underline">
               Work With Me!
             </a>
           </p>
         </div>
 
-        <div className="flex justify-end items-center space-x-[15px] mt-[-190px]">
+        {/* Right graphic - explicitly pulled right without breaking text flow */}
+        <div className="flex justify-end items-center space-x-[15px] mt-[-240px]">
           <Image
             src="/g1.png"
             alt=""
@@ -89,7 +85,6 @@ export default function Hero() {
             <Image src="/1.png" alt="LinkedIn" width={40} height={40} />
           </a>
         </div>
-
 
       </div>
     </section>

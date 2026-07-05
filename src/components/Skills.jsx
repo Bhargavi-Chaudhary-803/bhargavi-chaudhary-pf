@@ -32,8 +32,8 @@ export default function Skills() {
   ];
 
   return (
-    <section className="min-h-screen px-6 pt-[-12] bg-transparent">
-      <div className="max-w-7xl mx-auto mt-[50px]">
+    <section className="min-h-screen px-6  mt-10 bg-transparent">
+      <div className="max-w-7xl mx-auto mt-[100px]">
 
         {/* 1. Left aligned: "Hi! I am" */}
         <div className="flex justify-center items-baseline gap-5 mt-8">
@@ -105,7 +105,7 @@ export default function Skills() {
         </div>
         {/* --- 2-ROW GRID LOGO SECTION END --- */}
 
-        <div className="flex justify-start w-full mt-[-170px]">
+        <div className="flex justify-start w-full mt-[-350px]">
           <Image
             src="/g3.png"
             alt=""

@@ -29,7 +29,7 @@ const projects = [
     tagline: "Smart waste management, powered by vision",
     description:
       "A waste-classification platform using PyTorch and OpenCV to sort waste in real time, built to make smart-city waste management measurable instead of guesswork.",
-    
+
     github: "https://github.com/Bhargavi-Chaudhary-803/Verdian",
     live: "https://verdian-wastesystem.vercel.app/",
     image: "/p3.png",
@@ -39,7 +39,7 @@ const projects = [
     tagline: "A website specially designed for MUJ students to navigate through their campus with ease.",
     description:
       "UniNav is a smart campus navigation platform for MUJ students and visitors. It helps users quickly find buildings, discover the shortest routes, and explore campus facilities without getting lost",
-    
+
     github: "https://github.com/Anmol-Srivastava-073/manipalmap",
     live: "https://manipalmap.vercel.app/",
     image: "/p2.png",
@@ -92,19 +92,23 @@ function GithubIcon({ size = 16, className = "" }) {
 
 function ProjectCard({ project }) {
   return (
-    <div className="group flex flex-col border border-black/10 rounded-2xl overflow-hidden transition-all duration-200 hover:border-black/25 hover:-translate-y-1">
+    <div className="group flex flex-col border-3 border-black rounded-2xl overflow-hidden transition-all duration-200 hover:border-black hover:-translate-y-1">
       {/* Image */}
-      <div className="relative w-full aspect-[4/3] bg-black/[0.03] overflow-hidden">
+      <div className="relative w-full bg-black/[0.02] overflow-hidden border-b-2 border-black/40">
         {project.image ? (
           <Image
             src={project.image}
             alt={`${project.title} preview`}
-            fill
+
+            width={600}
+            height={450}
             sizes="(max-width: 768px) 100vw, 33vw"
-            className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+
+            className="w-full h-auto object-layout transition-transform duration-300 group-hover:scale-[1.02]"
           />
         ) : (
-          <div className="w-full h-full border border-dashed border-black/15 flex flex-col items-center justify-center gap-2 text-black/30">
+          /* Kept the fallback box at a clean fixed aspect ratio so empty cards still look uniform */
+          <div className="w-full aspect-[4/3] border border-dashed border-black/15 flex flex-col items-center justify-center gap-2 text-black/30">
             <ImageOff size={22} strokeWidth={1.5} />
             <span className="font-inter text-[12px] tracking-wide uppercase">
               Add image
@@ -124,7 +128,7 @@ function ProjectCard({ project }) {
 
         <p className="font-inter text-[15px] leading-relaxed text-black mt-4">
           {project.description}
-        </p>        
+        </p>
 
         <div className="flex items-center gap-2 mt-auto pt-6">
           <a
@@ -155,12 +159,12 @@ export default function Projects() {
   return (
     <section id="projects" className="px-6 pt-24 pb-32 bg-transparent">
       <div className="max-w-7xl mx-auto">
-        
+
         <div className="flex justify-center items-baseline gap-5">
           <span className="font-inter text-[95px] md:text-[95px] font-semibold tracking-[-2px] text-black">
             Projects I've
           </span>
-          <span className="font-noto text-[80px] md:text-[80px] font-light italic leading-none tracking-[-3px] scale-y-[1.15] origin-bottom inline-block text-black">
+          <span className="font-noto text-[80px] md:text-[90px] font-light italic leading-none tracking-[-3px] scale-y-[1.15] origin-bottom inline-block text-black">
             Built
           </span>
         </div>

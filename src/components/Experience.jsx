@@ -63,8 +63,8 @@ export default function Experience() {
           <Image
             src="/g4.png"
             alt=""
-            width={240}
-            height={240}
+            width={200}
+            height={200}
             className="object-contain"
           />
         </div>
