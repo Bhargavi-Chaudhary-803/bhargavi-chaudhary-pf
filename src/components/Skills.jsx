@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import LeetCodeStats from "./LeetCodeStats";
 
 export default function Skills() {
   // State to track which logo is being hovered
@@ -114,6 +115,9 @@ export default function Skills() {
             className="object-contain -ml-[20px] sm:-ml-[40px] md:-ml-[90px]"
           />
         </div>
+
+        {/* --- LEETCODE STATS SECTION --- */}
+        <LeetCodeStats />
 
       </div>
     </section>

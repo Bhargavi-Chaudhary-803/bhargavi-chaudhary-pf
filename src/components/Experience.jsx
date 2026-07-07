@@ -31,15 +31,6 @@ export default function Experience() {
     <span className="font-normal text-right whitespace-nowrap ml-8">Mar 2026 — Present</span>
   </div>
 
-  {/* Item 2 */}
-  <div className="flex justify-between items-start">
-    <div>
-      <h3 className="font-bold tracking-tight">Junior Tech Working Team</h3>
-      <p className="font-normal text-black/80">Google Developer Group (GDG) MUJ</p>
-    </div>
-    <span className="font-normal text-right whitespace-nowrap ml-8">Oct 2025 — Present</span>
-  </div>
-
   {/* Item 3 */}
   <div className="flex justify-between items-start">
     <div>
@@ -53,7 +44,7 @@ export default function Experience() {
   <div className="flex justify-between items-start">
     <div>
       <h3 className="font-bold tracking-tight">Graphic Designer & Social Media Intern</h3>
-      <p className="font-normal text-black/80">Zèle Labs</p>
+      <p className="font-normal text-black/80">TBLS Edu Federation</p>
     </div>
     <span className="font-normal text-right whitespace-nowrap ml-8">Jan 2024 — Apr 2024</span>
   </div>
