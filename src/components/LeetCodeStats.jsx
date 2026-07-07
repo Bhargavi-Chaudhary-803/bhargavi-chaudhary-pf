@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 // TODO: replace with your actual LeetCode username
 const LEETCODE_USERNAME = "bhargavi-chaudhary-803";
@@ -92,6 +93,25 @@ function formatDate(date) {
   return date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 }
 
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
 export default function LeetCodeStats() {
   const [stats, setStats] = useState(null);
   const [status, setStatus] = useState("loading");
@@ -143,15 +163,21 @@ export default function LeetCodeStats() {
 
   return (
     <div className="w-full flex justify-center px-6 mt-16 mb-32">
-      <div className="w-full max-w-4xl border border-neutral-200 rounded-2xl px-6 py-7 sm:px-8 sm:py-8 bg-white">
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        className="w-full max-w-4xl border border-neutral-200 rounded-2xl px-6 py-7 sm:px-8 sm:py-8 bg-white"
+      >
 
         {/* Eyebrow */}
-        <span className="font-mono text-xs tracking-widest font-semibold text-neutral-400 uppercase">
+        <motion.span variants={fadeUp} className="font-mono text-xs tracking-widest font-semibold text-neutral-400 uppercase">
           LeetCode
-        </span>
+        </motion.span>
 
         {/* Solved stats row */}
-        <div className="flex items-end justify-between mt-3 flex-wrap gap-4">
+        <motion.div variants={fadeUp} className="flex items-end justify-between mt-3 flex-wrap gap-4">
           <div>
             <span className="font-inter text-4xl font-semibold text-neutral-900 tracking-tight">
               {stats.totalSolved}
@@ -177,12 +203,12 @@ export default function LeetCodeStats() {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         <div className="h-px bg-neutral-200 my-6" />
 
         {/* Heatmap header — swaps to the hovered day on interaction */}
-        <div className="flex items-center justify-between mb-4 flex-wrap gap-2 min-h-[20px]">
+        <motion.div variants={fadeUp} className="flex items-center justify-between mb-4 flex-wrap gap-2 min-h-[20px]">
           <p className="font-inter text-base text-neutral-600">
             {hovered ? (
               <>
@@ -204,10 +230,10 @@ export default function LeetCodeStats() {
               Max streak <span className="text-neutral-900 font-semibold ml-1">{calendar.maxStreak}</span>
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Heatmap */}
-        <div className="overflow-x-auto">
+        <motion.div variants={fadeUp} className="overflow-x-auto">
           <div className="inline-flex gap-1">
             {calendar.weeks.map((week, wi) => (
               <div key={wi} className="flex flex-col gap-1">
@@ -243,17 +269,17 @@ export default function LeetCodeStats() {
               </span>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Legend */}
-        <div className="flex items-center justify-end gap-2 mt-4">
+        <motion.div variants={fadeUp} className="flex items-center justify-end gap-2 mt-4">
           <span className="font-mono text-xs text-neutral-400 mr-1">Less</span>
           {["#EDEDEC", ...GREEN_SCALE].map((c) => (
             <span key={c} className="w-3 h-3 rounded-[3px] border-0 outline-none" style={{ backgroundColor: c, border: "none" }} />
           ))}
           <span className="font-mono text-xs text-neutral-400 ml-1">More</span>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       <style jsx>{`
         .cell-anim {

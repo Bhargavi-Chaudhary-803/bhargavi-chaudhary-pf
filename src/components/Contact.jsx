@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { Mail, ArrowUpRight, CheckCircle2, Loader2 } from "lucide-react";
 
 const EMAIL = "bhargavichaudhary803@gmail.com";
@@ -9,6 +10,52 @@ const GITHUB_URL = "https://github.com/Bhargavi-Chaudhary-803";
 const GITHUB_HANDLE = "Bhargavi-Chaudhary-803";
 const LINKEDIN_URL = "https://www.linkedin.com/in/bhargavi-chaudhary-55384936a/";
 const LINKEDIN_NAME = "Bhargavi Chaudhary";
+
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.85 },
+  show: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const pillList = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const pillItem = {
+  hidden: { opacity: 0, x: -20 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+  },
+};
 
 function GithubIcon({ size = 16, className = "" }) {
   return (
@@ -28,10 +75,12 @@ function LinkedinIcon({ size = 16, className = "" }) {
 
 function ContactPill({ icon, label, href }) {
   return (
-    <a
+    <motion.a
+      variants={pillItem}
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      whileHover={{ y: -2 }}
       className="group flex items-center gap-3 border border-black rounded-full py-3 pl-3 pr-5 transition-colors duration-150 hover:border-black"
     >
       <span className="flex items-center justify-center w-8 h-8 rounded-full bg-black text-white shrink-0">
@@ -44,7 +93,7 @@ function ContactPill({ icon, label, href }) {
         size={15}
         className="ml-auto text-black transition-all duration-150 group-hover:text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
       />
-    </a>
+    </motion.a>
   );
 }
 
@@ -90,36 +139,51 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative px-6 pt-24 pb-32 overflow-hidden">
-      <div className="max-w-5xl mx-auto relative">
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        className="max-w-5xl mx-auto relative"
+      >
         {/* Header */}
-        <div className="flex justify-center items-baseline gap-4 flex-wrap">
+        <motion.div variants={fadeUp} className="flex justify-center items-baseline gap-4 flex-wrap">
           <span className="font-inter text-[95px] md:text-[95px] font-semibold tracking-[-2px] text-black">
             Get In
           </span>
           <span className="font-noto text-[80px] md:text-[88px] font-light italic leading-none tracking-[-2px] scale-y-[1.15] origin-bottom inline-block text-black">
             Touch!
           </span>
-        </div>
-        <span className="font-inter flex flex-col items-center justify-center text-center text-[20px] font-semibold tracking-[-1px]">
+        </motion.div>
+        <motion.span
+          variants={fadeUp}
+          className="font-inter flex flex-col items-center justify-center text-center text-[20px] font-semibold tracking-[-1px]"
+        >
           Whether it's an opportunity, a collaboration, or just a conversation, I'm always open for a fresh discussion!
           <br />
           Pick your preferred channel.
-        </span>
+        </motion.span>
 
-        <div className="hidden lg:block absolute top-1/2 right-[calc(-53vw+50%)] -translate-y-1/2 w-[270px] h-[270px] opacity-90 pointer-events-none">
+        <motion.div
+          variants={scaleIn}
+          className="hidden lg:block absolute top-1/2 right-[calc(-53vw+50%)] -translate-y-1/2 w-[270px] h-[270px] opacity-90 pointer-events-none"
+        >
           <Image src="/g5.png" alt="" fill className="object-contain" />
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mt-16">
           {/* Left: direct links */}
-          <div className="flex flex-col gap-3 justify-start">
+          <motion.div variants={pillList} className="flex flex-col gap-3 justify-start">
             <ContactPill icon={<Mail size={15} />} label={EMAIL} href={`mailto:${EMAIL}`} />
             <ContactPill icon={<GithubIcon size={15} />} label={GITHUB_HANDLE} href={GITHUB_URL} />
             <ContactPill icon={<LinkedinIcon size={15} />} label={LINKEDIN_NAME} href={LINKEDIN_URL} />
-          </div>
+          </motion.div>
 
           {/* Right: direct endpoint form submission */}
-          <div className="border border-black rounded-2xl overflow-hidden min-h-[380px] flex flex-col bg-white">
+          <motion.div
+            variants={fadeUp}
+            className="border border-black rounded-2xl overflow-hidden min-h-[380px] flex flex-col bg-white"
+          >
             <div className="border-b border-black px-6 py-4">
               <h3 className="font-inter text-[16px] font-semibold text-black">
                 Send your message directly
@@ -218,9 +282,9 @@ export default function Contact() {
                 </div>
               </form>
             )}
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

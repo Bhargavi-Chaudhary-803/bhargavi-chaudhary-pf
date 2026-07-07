@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 import {
   ArrowUpRight,
   Code2,
@@ -65,6 +68,44 @@ const TECH_ICONS = {
 };
 const DEFAULT_TECH_ICON = Code2;
 
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const cardGrid = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardItem = {
+  hidden: { opacity: 0, y: 32, scale: 0.97 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
 function TechBadge({ label }) {
   const Icon = TECH_ICONS[label] || DEFAULT_TECH_ICON;
   return (
@@ -92,7 +133,11 @@ function GithubIcon({ size = 16, className = "" }) {
 
 function ProjectCard({ project }) {
   return (
-    <div className="group flex flex-col border-3 border-black rounded-2xl overflow-hidden transition-all duration-200 hover:border-black hover:-translate-y-1">
+    <motion.div
+      variants={cardItem}
+      whileHover={{ y: -4 }}
+      className="group flex flex-col border-3 border-black rounded-2xl overflow-hidden transition-all duration-200 hover:border-black"
+    >
       {/* Image */}
       <div className="relative w-full bg-black/[0.02] overflow-hidden border-b-2 border-black/40">
         {project.image ? (
@@ -151,36 +196,42 @@ function ProjectCard({ project }) {
           </a>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 export default function Projects() {
   return (
     <section id="projects" className="px-6 pt-24 pb-32 bg-transparent">
-      <div className="max-w-7xl mx-auto">
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.15 }}
+        className="max-w-7xl mx-auto"
+      >
 
-        <div className="flex justify-center items-baseline gap-5">
+        <motion.div variants={fadeUp} className="flex justify-center items-baseline gap-5">
           <span className="font-inter text-[95px] md:text-[95px] font-semibold tracking-[-2px] text-black">
             Projects I've
           </span>
           <span className="font-noto text-[80px] md:text-[90px] font-light italic leading-none tracking-[-3px] scale-y-[1.15] origin-bottom inline-block text-black">
             Built
           </span>
-        </div>
-        <div className="flex justify-center gap-5 mt-[-8px] mb-16">
+        </motion.div>
+        <motion.div variants={fadeUp} className="flex justify-center gap-5 mt-[-8px] mb-16">
           <span className="font-inter text-[20px] font-semibold tracking-[-1px] text-black">
             My Production-ready projects that solve real problems.
           </span>
-        </div>
+        </motion.div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <motion.div variants={cardGrid} className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {projects.map((project) => (
             <ProjectCard key={project.title} project={project} />
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

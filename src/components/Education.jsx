@@ -1,4 +1,7 @@
+"use client";
+
 import { ImageOff } from "lucide-react";
+import { motion } from "framer-motion";
 
 const education = [
   {
@@ -21,6 +24,44 @@ const education = [
   },
 ];
 
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const cardGrid = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardItem = {
+  hidden: { opacity: 0, y: 32, scale: 0.97 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
 function SchoolLogo({ src, alt }) {
   return (
     /* Removed border-3 border-black to clean up the logo container */
@@ -36,7 +77,11 @@ function SchoolLogo({ src, alt }) {
 
 function EducationCard({ item }) {
   return (
-    <div className="relative flex border-3 border-black rounded-2xl bg-white transition-all duration-200 hover:-translate-y-1">
+    <motion.div
+      variants={cardItem}
+      whileHover={{ y: -4 }}
+      className="relative flex border-3 border-black rounded-2xl bg-white transition-all duration-200"
+    >
       {/* Identity block */}
       <div className="flex-1 flex flex-col gap-4 p-6">
         <div className="flex items-start gap-4">
@@ -73,35 +118,41 @@ function EducationCard({ item }) {
           {item.statLabel}
         </span>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 export default function Education() {
   return (
-    <section id="education" className="px-6 pt-24 pb-32 bg-transparent">
-      <div className="max-w-5xl mx-auto">
+    <section id="education" className="px-6 pt-24 mt-[-50px] pb-32 bg-transparent">
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        className="max-w-5xl mx-auto"
+      >
 
-        <div className="flex justify-center items-baseline gap-5">
+        <motion.div variants={fadeUp} className="flex justify-center items-baseline gap-5">
           <span className="font-inter text-[95px] md:text-[95px] font-semibold tracking-[-2px] text-black">
             My
           </span>
           <span className="font-noto text-[80px] md:text-[90px] font-light italic leading-none tracking-[-3px] scale-y-[1.15] origin-bottom inline-block text-black">
             Education
           </span>
-        </div>
-        <div className="flex justify-center gap-5 mt-[-8px] mb-16">
+        </motion.div>
+        <motion.div variants={fadeUp} className="flex justify-center gap-5 mt-[-8px] mb-16">
           <span className="font-inter text-[20px] font-semibold tracking-[-1px] text-black">
             Grades, credentials, and the institutions I've called home.
           </span>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <motion.div variants={cardGrid} className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {education.map((item) => (
             <EducationCard key={item.institution} item={item} />
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

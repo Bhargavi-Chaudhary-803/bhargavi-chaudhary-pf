@@ -1,13 +1,57 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { motion } from "framer-motion";
 import LeetCodeStats from "./LeetCodeStats";
 
-export default function Skills() {
-  // State to track which logo is being hovered
-  const [hoveredName, setHoveredName] = useState(null);
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.85 },
+  show: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const iconRow = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.06,
+    },
+  },
+};
+
+const iconItem = {
+  hidden: { opacity: 0, y: 16, scale: 0.8 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+export default function Skills() {
   // Row 1: 8 Icons
   const row1 = [
     { name: "HTML", svgPath: <svg className="w-8 h-8 fill-white" viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z" /></svg> },
@@ -34,10 +78,16 @@ export default function Skills() {
 
   return (
     <section className="min-h-screen px-6  mt-10 bg-transparent">
-      <div className="max-w-7xl mx-auto mt-[100px]">
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        className="max-w-7xl mx-auto mt-[100px]"
+      >
 
         {/* 1. Left aligned: "Hi! I am" */}
-        <div className="flex justify-center items-baseline gap-5 mt-8">
+        <motion.div variants={fadeUp} className="flex justify-center items-baseline gap-5 mt-8">
           <span className="font-inter text-[95px] font-semibold tracking-[-2px]">
             What I
           </span>
@@ -47,66 +97,70 @@ export default function Skills() {
           <span className="font-inter text-[95px] font-semibold tracking-[-2px]">
             with
           </span>
-        </div>
+        </motion.div>
 
-        <div className="flex justify-center items-baseline gap-5 mt-[-20px]">
+        <motion.div variants={fadeUp} className="flex justify-center items-baseline gap-5 mt-[-20px]">
           <span className="font-inter text-[20px] font-semibold tracking-[-1px]">
             A set of technologies & framework I have been learning, loving & utilizing in projects!
           </span>
-        </div>
+        </motion.div>
 
 
 
         {/* --- 2-ROW GRID LOGO SECTION START --- */}
-        <div className="flex flex-col items-center mt-[-15px] w-full">
-
-          {/* Top Dynamic Tracker Name */}
-          <div className="h-8 mb-6 flex items-center justify-center">
-            <span
-              className={`text-base font-mono tracking-widest font-semibold text-neutral-400 uppercase transition-all duration-200 transform ${hoveredName ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
-                }`}
-            >
-              {hoveredName || ""}
-            </span>
-          </div>
+        <div className="flex flex-col items-center mt-[10px] w-full">
 
           {/* Grid Layout Container */}
-          <div className="flex flex-col gap-5 items-center justify-center">
+          <div className="flex flex-col gap-7 items-center justify-center pt-10 pb-10">
 
             {/* First Row: 8 Items */}
-            <div className="flex items-center justify-center gap-5">
+            <motion.div
+              variants={iconRow}
+              className="flex items-center justify-center gap-5"
+            >
               {row1.map((tech) => (
-                <div
+                <motion.div
                   key={tech.name}
-                  className="relative cursor-pointer group"
+                  variants={iconItem}
+                  className="relative z-0 hover:z-30 cursor-pointer group"
                 >
+                  <span className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap font-mono text-xs tracking-widest font-semibold text-neutral-400 uppercase opacity-0 -translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0 z-30">
+                    {tech.name}
+                  </span>
                   <div className="w-16 h-16 rounded-full bg-black border border-neutral-800 flex items-center justify-center shadow-xl transition-all duration-300 ease-out group-hover:scale-110 group-hover:border-white/40 group-hover:shadow-[0_0_25px_4px_rgba(255,255,255,0.45)]">
                     {tech.svgPath}
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
             {/* Second Row: 8 Items */}
-            <div className="flex items-center justify-center gap-5">
+            <motion.div
+              variants={iconRow}
+              className="flex items-center justify-center gap-5"
+            >
               {row2.map((tech) => (
-                <div
+                <motion.div
                   key={tech.name}
-                  className="relative cursor-pointer group"
+                  variants={iconItem}
+                  className="relative z-0 hover:z-30 cursor-pointer group"
                 >
                   <div className="w-16 h-16 rounded-full bg-black border border-neutral-800 flex items-center justify-center shadow-xl transition-all duration-300 ease-out group-hover:scale-110 group-hover:border-white/40 group-hover:shadow-[0_0_25px_4px_rgba(255,255,255,0.45)]">
                     {tech.svgPath}
                   </div>
-                </div>
+                  <span className="pointer-events-none absolute -bottom-9 left-1/2 -translate-x-1/2 whitespace-nowrap font-mono text-xs tracking-widest font-semibold text-neutral-400 uppercase opacity-0 translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0 z-30">
+                    {tech.name}
+                  </span>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
           </div>
 
         </div>
         {/* --- 2-ROW GRID LOGO SECTION END --- */}
 
-        <div className="flex justify-start w-full mt-[-350px]">
+        <motion.div variants={scaleIn} className="flex justify-start w-full mt-[-350px]">
           <Image
             src="/g3.png"
             alt=""
@@ -114,12 +168,14 @@ export default function Skills() {
             height={400}
             className="object-contain -ml-[20px] sm:-ml-[40px] md:-ml-[90px]"
           />
-        </div>
+        </motion.div>
 
         {/* --- LEETCODE STATS SECTION --- */}
-        <LeetCodeStats />
+        <motion.div variants={fadeUp}>
+          <LeetCodeStats />
+        </motion.div>
 
-      </div>
+      </motion.div>
     </section>
   );
 }
