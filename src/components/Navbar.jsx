@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, LayoutGroup } from "framer-motion";
 import { User, Code2, GraduationCap, Briefcase, FolderGit2, Mail } from "lucide-react";
@@ -18,6 +18,30 @@ const ALL_IDS = ["hero", ...NAV_ITEMS.map((item) => item.id)];
 
 export default function Navbar() {
   const [active, setActive] = useState("hero");
+  const pillRef = useRef(null);
+
+  // Measure the actual navbar height (top offset + pill height + a little
+  // breathing room) and expose it as a CSS variable so every section can
+  // use it for scroll-margin-top. This stays correct even if the navbar's
+  // size changes later (responsive tweaks, font loading, etc.) instead of
+  // relying on a guessed Tailwind scroll-mt value that can drift out of sync.
+  useEffect(() => {
+    const updateNavHeight = () => {
+      if (pillRef.current) {
+        const pillHeight = pillRef.current.offsetHeight;
+        const topOffset = 24; // matches `top-6`
+        const buffer = 32; // extra breathing room below the navbar
+        document.documentElement.style.setProperty(
+          "--nav-height",
+          `${pillHeight + topOffset + buffer}px`
+        );
+      }
+    };
+
+    updateNavHeight();
+    window.addEventListener("resize", updateNavHeight);
+    return () => window.removeEventListener("resize", updateNavHeight);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -46,7 +70,10 @@ export default function Navbar() {
   return (
     <LayoutGroup id="navbar-group">
       <div className="fixed top-6 inset-x-0 z-50 flex justify-center pointer-events-none">
-        <div className="pointer-events-auto flex items-center gap-1.5 rounded-full border border-black/10 bg-white/70 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.06)] px-3 py-2.5">
+        <div
+          ref={pillRef}
+          className="pointer-events-auto flex items-center gap-1.5 rounded-full border border-black/10 bg-white/70 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.06)] px-3 py-2.5"
+        >
           
           {/* Brand button — Saturn icon */}
           <button

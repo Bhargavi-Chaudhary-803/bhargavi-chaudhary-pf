@@ -77,7 +77,7 @@ export default function Skills() {
   ];
 
   return (
-    <section className="min-h-screen px-6  mt-10 bg-transparent">
+    <section className="min-h-screen px-6 mt-40 bg-transparent">
       <motion.div
         variants={container}
         initial="hidden"
@@ -171,7 +171,8 @@ export default function Skills() {
         </motion.div>
 
         {/* --- LEETCODE STATS SECTION --- */}
-        <motion.div variants={fadeUp}>
+        
+        <motion.div variants={fadeUp} className="relative z-10 mt-[-100px]">
           <LeetCodeStats />
         </motion.div>
 

@@ -18,13 +18,13 @@ export default function Home() {
         <div id="about" className="w-full">
           <About />
         </div>
-        <div id="skills" className="w-full">
+        <div id="skills" className="w-full" style={{ scrollMarginTop: "var(--nav-height, 140px)" }}>
           <Skills />
         </div>
         <div id="education" className="w-full">
           <Education />
         </div>
-        <div id="experience" className="w-full">
+        <div id="experience" className="w-full" style={{ scrollMarginTop: "var(--nav-height, 140px)" }}>
           <Experience />
         </div>
         <div id="projects" className="w-full">

@@ -51,7 +51,7 @@ const timelineItem = {
 
 export default function Experience() {
   return (
-    <section className="min-h-screen px-6 pt-[-12] bg-transparent">
+    <section className="min-h-screen px-6 bg-transparent">
       <motion.div
         variants={container}
         initial="hidden"
@@ -108,7 +108,7 @@ export default function Experience() {
           </motion.div>
         </motion.div>
 
-        <motion.div variants={scaleIn} className="flex justify-end items-center space-x-[15px] mt-[-130px]">
+        <motion.div variants={scaleIn} className="flex justify-end items-center space-x-[5px] mt-[-180px]">
           <Image
             src="/g4.png"
             alt=""

@@ -1,15 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { Mail, ArrowUpRight, CheckCircle2, Loader2 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, ArrowUpRight, CheckCircle2, Loader2, Eye } from "lucide-react";
 
 const EMAIL = "bhargavichaudhary803@gmail.com";
 const GITHUB_URL = "https://github.com/Bhargavi-Chaudhary-803";
 const GITHUB_HANDLE = "Bhargavi-Chaudhary-803";
 const LINKEDIN_URL = "https://www.linkedin.com/in/bhargavi-chaudhary-55384936a/";
 const LINKEDIN_NAME = "Bhargavi Chaudhary";
+
+// Free, keyless hit-counter — same lightweight-integration pattern as the
+// contact form's Web3Forms call. Pick a namespace unique to your domain
+// so you don't collide with someone else's counter.
+const COUNTER_NAMESPACE = "bhargavi-chaudhary-portfolio";
+const COUNTER_KEY = "site-visits";
 
 const container = {
   hidden: {},
@@ -97,6 +103,80 @@ function ContactPill({ icon, label, href }) {
   );
 }
 
+// One split-flap style digit. Old value flips up and out, new value
+// flips in from below — same easing curve as the rest of the page.
+function Digit({ value }) {
+  return (
+    <div className="relative w-[26px] h-[38px] md:w-[30px] md:h-[42px] rounded-[6px] bg-black overflow-hidden">
+      <AnimatePresence mode="popLayout">
+        <motion.span
+          key={value}
+          initial={{ y: 22, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -22, opacity: 0 }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute inset-0 flex items-center justify-center font-inter text-[18px] md:text-[20px] font-bold text-white tabular-nums"
+        >
+          {value}
+        </motion.span>
+      </AnimatePresence>
+      {/* center seam — the one "mechanical" detail that sells the split-flap read */}
+      <div className="absolute left-0 right-0 top-1/2 h-[1px] bg-white/25 pointer-events-none" />
+    </div>
+  );
+}
+
+function VisitorCounter() {
+  const [count, setCount] = useState(null);
+  const [status, setStatus] = useState("loading"); // loading, ready, error
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function hit() {
+      try {
+        const res = await fetch(
+          `https://api.countapi.xyz/hit/${COUNTER_NAMESPACE}/${COUNTER_KEY}`
+        );
+        const data = await res.json();
+        if (!cancelled && typeof data.value === "number") {
+          setCount(data.value);
+          setStatus("ready");
+        } else {
+          throw new Error("bad response");
+        }
+      } catch (err) {
+        if (!cancelled) setStatus("error");
+      }
+    }
+
+    hit();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const digits =
+    status === "ready" && count !== null
+      ? String(count).padStart(6, "0").split("")
+      : null;
+
+  return (
+  <motion.div
+    variants={fadeUp}
+    className="flex flex-col items-center"
+  >
+    <span className="font-inter font-semibold text-[34px] tracking-[-0.05em] tabular-nums text-black">
+      {count?.toLocaleString()}
+    </span>
+
+    <span className="font-inter font-semibold text-[13px] uppercase tracking-[0.22em] text-black/45">
+      Visitors so far
+    </span>
+  </motion.div>
+);
+}
+
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle"); // idle, submitting, success, error
@@ -138,7 +218,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative px-6 pt-24 pb-32 overflow-hidden">
+    <section id="contact" className="relative px-6 pt-24 pb-32 mt-[-60px] overflow-hidden">
       <motion.div
         variants={container}
         initial="hidden"
@@ -163,6 +243,11 @@ export default function Contact() {
           <br />
           Pick your preferred channel.
         </motion.span>
+
+        {/* Visitor counter, centered under the header copy */}
+        <motion.div variants={fadeUp} className="flex justify-center mt-6">
+          <VisitorCounter />
+        </motion.div>
 
         <motion.div
           variants={scaleIn}

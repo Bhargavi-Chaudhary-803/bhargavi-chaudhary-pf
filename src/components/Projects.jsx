@@ -200,7 +200,7 @@ function ProjectCard({ project }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="px-6 pt-24 pb-32 bg-transparent">
+    <section id="projects" className="px-6 pt-24 mt-[-170px] pb-32 bg-transparent">
       <motion.div
         variants={container}
         initial="hidden"
