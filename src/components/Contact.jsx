@@ -135,8 +135,8 @@ function VisitorCounter() {
 
     async function hit() {
       try {
-        const res = await fetch("/api/visitor");
-        const data = await res.json();
+        const res= await fetch("/api/visitor");
+        const data= await res.json();
 
         setCount(data.visitors);
         if (!cancelled && typeof data.value === "number") {
