@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowUpRight,
@@ -25,7 +24,7 @@ const projects = [
       "A RAG-powered chatbot that structures patient intake using the OPQRST clinical framework, so every visit starts with organized history instead of a blank form.",
     github: "https://github.com/Anmol-Srivastava-073/veritaschat",
     live: "https://veritas-healthbot.vercel.app/",
-    image: "/p1.png",
+    video: "/p1.mp4",
   },
   {
     title: "Verdian",
@@ -35,7 +34,7 @@ const projects = [
 
     github: "https://github.com/Bhargavi-Chaudhary-803/Verdian",
     live: "https://verdian-wastesystem.vercel.app/",
-    image: "/p3.png",
+    video: "/p2.mp4",
   },
   {
     title: "Manipal UniNav",
@@ -45,7 +44,7 @@ const projects = [
 
     github: "https://github.com/Anmol-Srivastava-073/manipalmap",
     live: "https://manipalmap.vercel.app/",
-    image: "/p2.png",
+    video: "/p3.mp4",
   },
 ];
 
@@ -139,24 +138,23 @@ function ProjectCard({ project }) {
       className="group flex flex-col border-3 border-black rounded-2xl overflow-hidden transition-all duration-200 hover:border-black"
     >
       {/* Image */}
-      <div className="relative w-full bg-black/[0.02] overflow-hidden border-b-2 border-black/40">
-        {project.image ? (
-          <Image
-            src={project.image}
-            alt={`${project.title} preview`}
-
-            width={600}
-            height={450}
-            sizes="(max-width: 768px) 100vw, 33vw"
-
-            className="w-full h-auto object-layout transition-transform duration-300 group-hover:scale-[1.02]"
+      <div className="relative w-full aspect-[4/3] bg-black/[0.02] overflow-hidden border-b-2 border-black/40">
+        {project.video ? (
+          <video
+            src={project.video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
           />
         ) : (
           /* Kept the fallback box at a clean fixed aspect ratio so empty cards still look uniform */
-          <div className="w-full aspect-[4/3] border border-dashed border-black/15 flex flex-col items-center justify-center gap-2 text-black/30">
+          <div className="w-full h-full border border-dashed border-black/15 flex flex-col items-center justify-center gap-2 text-black/30">
             <ImageOff size={22} strokeWidth={1.5} />
             <span className="font-inter text-[12px] tracking-wide uppercase">
-              Add image
+              Add video
             </span>
           </div>
         )}
