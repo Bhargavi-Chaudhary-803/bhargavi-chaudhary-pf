@@ -135,10 +135,10 @@ function VisitorCounter() {
 
     async function hit() {
       try {
-        const res = await fetch(
-          `https://api.countapi.xyz/hit/${COUNTER_NAMESPACE}/${COUNTER_KEY}`
-        );
+        const res = await fetch("/api/visitor");
         const data = await res.json();
+
+        setCount(data.visitors);
         if (!cancelled && typeof data.value === "number") {
           setCount(data.value);
           setStatus("ready");
@@ -162,19 +162,19 @@ function VisitorCounter() {
       : null;
 
   return (
-  <motion.div
-    variants={fadeUp}
-    className="flex flex-col items-center"
-  >
-    <span className="font-inter font-semibold text-[34px] tracking-[-0.05em] tabular-nums text-black">
-      {count?.toLocaleString()}
-    </span>
+    <motion.div
+      variants={fadeUp}
+      className="flex flex-col items-center"
+    >
+      <span className="font-inter font-semibold text-[34px] tracking-[-0.05em] tabular-nums text-black">
+        {count?.toLocaleString()}
+      </span>
 
-    <span className="font-inter font-semibold text-[13px] uppercase tracking-[0.22em] text-black/45">
-      Visitors so far
-    </span>
-  </motion.div>
-);
+      <span className="font-inter font-semibold text-[13px] uppercase tracking-[0.22em] text-black/45">
+        Visitors so far
+      </span>
+    </motion.div>
+  );
 }
 
 export default function Contact() {
@@ -282,7 +282,7 @@ export default function Contact() {
                 <p className="font-inter text-[14px] text-black/60 mt-1 max-w-[280px]">
                   Thanks for reaching out, Bhargavi. I'll review this and get back to you shortly.
                 </p>
-                <button 
+                <button
                   onClick={() => setStatus("idle")}
                   className="mt-6 font-inter text-[13px] font-medium underline uppercase tracking-wider text-black/50 hover:text-black"
                 >
