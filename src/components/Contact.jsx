@@ -11,12 +11,6 @@ const GITHUB_HANDLE = "Bhargavi-Chaudhary-803";
 const LINKEDIN_URL = "https://www.linkedin.com/in/bhargavi-chaudhary-55384936a/";
 const LINKEDIN_NAME = "Bhargavi Chaudhary";
 
-// Free, keyless hit-counter — same lightweight-integration pattern as the
-// contact form's Web3Forms call. Pick a namespace unique to your domain
-// so you don't collide with someone else's counter.
-const COUNTER_NAMESPACE = "bhargavi-chaudhary-portfolio";
-const COUNTER_KEY = "site-visits";
-
 const container = {
   hidden: {},
   show: {
@@ -133,14 +127,17 @@ function VisitorCounter() {
   useEffect(() => {
     let cancelled = false;
 
-    async function hit() {
+    async function fetchCount() {
       try {
-        const res= await fetch("/api/visitor");
-        const data= await res.json();
+        const res = await fetch("/api/visitor");
+        if (!res.ok) throw new Error("bad response");
 
-        setCount(data.visitors);
-        if (!cancelled && typeof data.value === "number") {
-          setCount(data.value);
+        const data = await res.json();
+
+        if (cancelled) return;
+
+        if (typeof data.visitors === "number") {
+          setCount(data.visitors);
           setStatus("ready");
         } else {
           throw new Error("bad response");
@@ -150,7 +147,7 @@ function VisitorCounter() {
       }
     }
 
-    hit();
+    fetchCount();
     return () => {
       cancelled = true;
     };
@@ -162,13 +159,23 @@ function VisitorCounter() {
       : null;
 
   return (
-    <motion.div
-      variants={fadeUp}
-      className="flex flex-col items-center"
-    >
-      <span className="font-inter font-semibold text-[34px] tracking-[-0.05em] tabular-nums text-black">
-        {count?.toLocaleString()}
-      </span>
+    <motion.div variants={fadeUp} className="flex flex-col items-center gap-2">
+      {status === "ready" && digits ? (
+        <div className="flex items-center gap-2">
+          <Eye size={16} className="text-black/40 mr-1" strokeWidth={1.75} />
+          <div className="flex items-center gap-[3px]">
+            {digits.map((d, i) => (
+              <Digit key={i} value={d} />
+            ))}
+          </div>
+        </div>
+      ) : status === "error" ? (
+        <span className="font-inter text-[13px] text-black/40">
+          Visitor count unavailable
+        </span>
+      ) : (
+        <Loader2 size={20} className="animate-spin text-black/40" />
+      )}
 
       <span className="font-inter font-semibold text-[13px] uppercase tracking-[0.22em] text-black/45">
         Visitors so far
