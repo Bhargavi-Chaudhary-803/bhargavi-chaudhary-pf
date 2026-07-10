@@ -140,7 +140,7 @@ function VisitorCounter() {
         ) : (
           <Loader2 size={12} className="inline animate-spin text-black/40 align-middle mx-1" />
         )}{" "}
-        visitors, & you're the latest!
+        visitors, you're the latest
       </span>
     </motion.div>
   );
