@@ -97,6 +97,23 @@ function ContactPill({ icon, label, href }) {
   );
 }
 
+function AnimatedCount({ value }) {
+  const count = useMotionValue(0);
+  const [display, setDisplay] = useState(0);
+
+  useEffect(() => {
+    if (typeof value !== "number") return;
+    const controls = animate(count, value, {
+      duration: 1.2,
+      ease: [0.16, 1, 0.3, 1],
+      onUpdate: (v) => setDisplay(Math.floor(v)),
+    });
+    return () => controls.stop();
+  }, [value]);
+
+  return <span className="tabular-nums">{display.toLocaleString()}</span>;
+}
+
 function VisitorCounter() {
   const [count, setCount] = useState(null);
   const [status, setStatus] = useState("loading"); // loading, ready, error
