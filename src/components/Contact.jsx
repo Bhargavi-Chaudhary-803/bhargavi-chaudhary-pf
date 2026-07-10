@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, animate, useMotionValue } from "framer-motion";
 import { Mail, ArrowUpRight, CheckCircle2, Loader2, Eye } from "lucide-react";
 
 const EMAIL = "bhargavichaudhary803@gmail.com";
@@ -97,29 +97,6 @@ function ContactPill({ icon, label, href }) {
   );
 }
 
-// One split-flap style digit. Old value flips up and out, new value
-// flips in from below — same easing curve as the rest of the page.
-function Digit({ value }) {
-  return (
-    <div className="relative w-[26px] h-[38px] md:w-[30px] md:h-[42px] rounded-[6px] bg-black overflow-hidden">
-      <AnimatePresence mode="popLayout">
-        <motion.span
-          key={value}
-          initial={{ y: 22, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -22, opacity: 0 }}
-          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute inset-0 flex items-center justify-center font-inter text-[18px] md:text-[20px] font-bold text-white tabular-nums"
-        >
-          {value}
-        </motion.span>
-      </AnimatePresence>
-      {/* center seam — the one "mechanical" detail that sells the split-flap read */}
-      <div className="absolute left-0 right-0 top-1/2 h-[1px] bg-white/25 pointer-events-none" />
-    </div>
-  );
-}
-
 function VisitorCounter() {
   const [count, setCount] = useState(null);
   const [status, setStatus] = useState("loading"); // loading, ready, error
@@ -131,11 +108,8 @@ function VisitorCounter() {
       try {
         const res = await fetch("/api/visitor");
         if (!res.ok) throw new Error("bad response");
-
         const data = await res.json();
-
         if (cancelled) return;
-
         if (typeof data.visitors === "number") {
           setCount(data.visitors);
           setStatus("ready");
@@ -153,32 +127,20 @@ function VisitorCounter() {
     };
   }, []);
 
-  const digits =
-    status === "ready" && count !== null
-      ? String(count).padStart(6, "0").split("")
-      : null;
-
   return (
-    <motion.div variants={fadeUp} className="flex flex-col items-center gap-2">
-      {status === "ready" && digits ? (
-        <div className="flex items-center gap-2">
-          <Eye size={16} className="text-black/40 mr-1" strokeWidth={1.75} />
-          <div className="flex items-center gap-[3px]">
-            {digits.map((d, i) => (
-              <Digit key={i} value={d} />
-            ))}
-          </div>
-        </div>
-      ) : status === "error" ? (
-        <span className="font-inter text-[13px] text-black/40">
-          Visitor count unavailable
-        </span>
-      ) : (
-        <Loader2 size={20} className="animate-spin text-black/40" />
-      )}
-
-      <span className="font-inter font-semibold text-[13px] uppercase tracking-[0.22em] text-black/45">
-        Visitors so far
+    <motion.div variants={fadeUp} className="flex items-center justify-center">
+      <span className="font-inter font-medium text-[14px] text-black">
+        This page has had{" "}
+        {status === "ready" ? (
+          <span className="font-bold text-black">
+            <AnimatedCount value={count} />
+          </span>
+        ) : status === "error" ? (
+          <span className="font-medium text-black/40">—</span>
+        ) : (
+          <Loader2 size={12} className="inline animate-spin text-black/40 align-middle mx-1" />
+        )}{" "}
+        visitors, & you're the latest!
       </span>
     </motion.div>
   );
