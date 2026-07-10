@@ -153,7 +153,7 @@ function VisitorCounter() {
             <AnimatedCount value={count} />
           </span>
         ) : status === "error" ? (
-          <span className="font-semibold text-black tracking-[-1px]">—</span>
+          <span className="font-semibold text-black tracking-[-1px]">"—"</span>
         ) : (
           <Loader2 size={20} className="inline animate-spin text-black align-middle mx-1 tracking-[-2px]" />
         )}{" "}
