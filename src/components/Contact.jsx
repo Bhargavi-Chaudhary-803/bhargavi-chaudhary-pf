@@ -146,16 +146,16 @@ function VisitorCounter() {
 
   return (
     <motion.div variants={fadeUp} className="flex items-center justify-center">
-      <span className="font-inter font-semibold text-[20px] text-black tracking-[-1px]">
+      <span className="font-inter font-regular text-[20px] text-black tracking-[-1px]">
         This page has had "{""}
         {status === "ready" ? (
           <span className="font-bold text-black">
             <AnimatedCount value={count} />
           </span>
         ) : status === "error" ? (
-          <span className="font-semibold text-black tracking-[-1px]">—</span>
+          <span className="font-bold text-black tracking-[-1px]">—</span>
         ) : (
-          <Loader2 size={20} className="inline animate-spin text-black align-middle mx-1 tracking-[-2px]" />
+          <Loader2 size={20} className="font-regular inline animate-spin text-black align-middle mx-1 tracking-[-2px]" />
         )}{""}
         " visitors, & you're the latest!
       </span>
