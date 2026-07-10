@@ -147,7 +147,7 @@ function VisitorCounter() {
   return (
     <motion.div variants={fadeUp} className="flex items-center justify-center">
       <span className="font-inter font-semibold text-[20px] text-black tracking-[-1px]">
-        This page has had "{" "}
+        This page has had "{""}
         {status === "ready" ? (
           <span className="font-bold text-black">
             <AnimatedCount value={count} />
@@ -156,7 +156,7 @@ function VisitorCounter() {
           <span className="font-semibold text-black tracking-[-1px]">—</span>
         ) : (
           <Loader2 size={20} className="inline animate-spin text-black align-middle mx-1 tracking-[-2px]" />
-        )}{" "}
+        )}{""}
         " visitors, & you're the latest!
       </span>
     </motion.div>
