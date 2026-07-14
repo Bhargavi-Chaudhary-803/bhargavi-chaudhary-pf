@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 
 const container = {
   hidden: {},
@@ -57,57 +58,71 @@ export default function Hero() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="max-w-7xl mx-auto mt-8 md:mt-[50px] relative"
+        className="max-w-7xl mx-auto mt-6 md:mt-[50px] relative flex flex-col items-center md:items-stretch"
       >
-        {/* 1. "Hi! I am" — scales from mobile up to the original desktop size */}
-        <motion.div variants={fadeUp} className="flex items-baseline gap-2 mt-4 md:mt-8">
-          <span className="font-inter text-[34px] sm:text-[44px] md:text-[60px] font-normal tracking-[-1px] md:tracking-[-2px]">
+        {/* 1. "Hi! I am" — centered on mobile, left-aligned on desktop like before */}
+        <motion.div variants={fadeUp} className="flex items-baseline justify-center md:justify-start gap-2 mt-4 md:mt-8">
+          <span className="font-inter text-[30px] sm:text-[44px] md:text-[60px] font-normal tracking-[-0.5px] md:tracking-[-2px]">
             Hi! I
           </span>
-          <span className="font-noto text-[32px] sm:text-[42px] md:text-[58px] font-normal italic tracking-[-0.04em] scale-y-110 origin-bottom">
+          <span className="font-noto text-[28px] sm:text-[42px] md:text-[58px] font-normal italic tracking-[-0.04em] scale-y-110 origin-bottom">
             am
           </span>
         </motion.div>
 
-        {/* 2. Name — the big one. Fluid scale prevents overflow on narrow screens */}
-        <motion.div variants={fadeUp} className="flex flex-wrap items-baseline gap-2 sm:gap-4 md:gap-5 mt-1 md:-mt-5 md:-ml-1">
-          <span className="font-inter text-[42px] sm:text-[64px] md:text-[105px] font-semibold leading-none tracking-[-1px] md:tracking-[-4px]">
+        {/* 2. Name — forced onto one line on mobile via whitespace-nowrap + a
+            font size small enough to fit a 360px viewport with room to spare */}
+        <motion.div
+          variants={fadeUp}
+          className="flex flex-nowrap items-baseline justify-center md:justify-start gap-1 sm:gap-3 md:gap-5 mt-1 md:-mt-5 md:-ml-1"
+        >
+          <span className="font-inter text-[26px] sm:text-[46px] md:text-[105px] font-semibold leading-none tracking-[-0.5px] md:tracking-[-4px] whitespace-nowrap">
             Bhargavi
           </span>
-          <span className="font-noto text-[40px] sm:text-[62px] md:text-[102px] font-light leading-none italic tracking-[-0.04em] scale-y-110 origin-bottom">
+          <span className="font-noto text-[24px] sm:text-[44px] md:text-[102px] font-light leading-none italic tracking-[-0.04em] scale-y-110 origin-bottom whitespace-nowrap">
             Chaudhary
           </span>
         </motion.div>
 
         <div className="h-6 md:h-12" />
 
-        {/* Left column content wrapper */}
-        <div className="max-w-2xl flex flex-col">
+        {/* Left column content — centered text on mobile, original left-aligned block on desktop */}
+        <div className="max-w-2xl flex flex-col items-center md:items-start">
           <motion.p
             variants={fadeUp}
-            className="font-inter text-[17px] sm:text-[22px] md:text-[30px] font-regular tracking-[-0.5px] md:tracking-[-1px] leading-snug md:leading-none text-left"
+            className="font-inter text-[16px] sm:text-[22px] md:text-[30px] font-regular tracking-[-0.5px] md:tracking-[-1px] leading-snug md:leading-none text-center md:text-left"
           >
             Web Developer / UI.UX Designer / Visual Identity / Software Developer
           </motion.p>
 
           <motion.p
             variants={fadeUp}
-            className="font-inter text-[15px] sm:text-[19px] md:text-[25px] font-medium mt-5 md:mt-10 tracking-[-0.5px] md:tracking-[-1px] text-left"
+            className="font-inter text-[14px] sm:text-[19px] md:text-[25px] font-medium mt-5 md:mt-10 tracking-[-0.5px] md:tracking-[-1px] text-center md:text-left"
           >
             I build seamless digital experiences & create products with clean design.
           </motion.p>
 
-          <motion.p
-            variants={fadeUp}
-            className="font-inter text-[17px] sm:text-[22px] md:text-[30px] font-bold mt-5 md:mt-10 tracking-[-0.5px] md:tracking-[-1px] text-left"
-          >
-            <a href="mailto:bhargavichaudhary803@gmail.com" className="hover:underline">
+          {/* "Work With Me!" — a distinct tappable pill CTA on mobile since a
+              plain underlined link is an easy miss-tap target on touch; desktop
+              keeps the original inline text-link treatment untouched. */}
+          <motion.div variants={fadeUp} className="mt-6 md:mt-10">
+            <a
+              href="mailto:bhargavichaudhary803@gmail.com"
+              className="md:hidden inline-flex items-center gap-2 bg-black text-white rounded-full pl-5 pr-4 py-3 font-inter text-[15px] font-semibold tracking-[-0.3px] active:scale-95 transition-transform"
+            >
+              Work With Me!
+              <ArrowUpRight size={17} />
+            </a>
+            <a
+              href="mailto:bhargavichaudhary803@gmail.com"
+              className="hidden md:inline font-inter text-[30px] font-bold tracking-[-1px] hover:underline"
+            >
               Work With Me!
             </a>
-          </motion.p>
+          </motion.div>
         </div>
 
-        {/* Right graphic — sits inline below text on mobile, pulled up/right on desktop */}
+        {/* Right graphic — centered on mobile, pulled up/right on desktop */}
         <motion.div
           variants={scaleIn}
           className="flex justify-center md:justify-end items-center mt-8 md:mt-[-240px]"
@@ -117,14 +132,14 @@ export default function Hero() {
             alt=""
             width={260}
             height={260}
-            className="object-contain w-[160px] h-[160px] sm:w-[200px] sm:h-[200px] md:w-[260px] md:h-[260px]"
+            className="object-contain w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] md:w-[260px] md:h-[260px]"
           />
         </motion.div>
 
-        {/* Social icons — centered below on mobile, right-shifted on desktop like before */}
+        {/* Social icons — centered on mobile, right-shifted on desktop like before */}
         <motion.div
           variants={iconContainer}
-          className="flex justify-center md:ml-[500px] items-center gap-4 md:gap-0 md:space-x-[15px] mt-6 md:mt-[-80px]"
+          className="flex justify-center md:ml-[500px] items-center gap-5 md:gap-0 md:space-x-[15px] mt-6 md:mt-[-80px]"
         >
           <motion.a
             variants={iconItem}
