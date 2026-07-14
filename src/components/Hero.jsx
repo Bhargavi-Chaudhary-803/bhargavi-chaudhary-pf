@@ -57,52 +57,49 @@ export default function Hero() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="max-w-7xl mx-auto mt-[50px] relative"
+        className="max-w-7xl mx-auto mt-8 md:mt-[50px] relative"
       >
-
-        {/* 1. Left aligned: "Hi! I am" */}
-        <motion.div variants={fadeUp} className="flex items-baseline gap-2 mt-8">
-          <span className="font-inter text-[60px] font-normal tracking-[-2px]">
+        {/* 1. "Hi! I am" — scales from mobile up to the original desktop size */}
+        <motion.div variants={fadeUp} className="flex items-baseline gap-2 mt-4 md:mt-8">
+          <span className="font-inter text-[34px] sm:text-[44px] md:text-[60px] font-normal tracking-[-1px] md:tracking-[-2px]">
             Hi! I
           </span>
-          <span className="font-noto text-[58px] font-normal italic tracking-[-0.04em] scale-y-110 origin-bottom">
+          <span className="font-noto text-[32px] sm:text-[42px] md:text-[58px] font-normal italic tracking-[-0.04em] scale-y-110 origin-bottom">
             am
           </span>
         </motion.div>
 
-        {/* Added -ml-2 to the parent container */}
-        <motion.div variants={fadeUp} className="flex items-baseline gap-5 -mt-5 -ml-1">
-          <span className="font-inter text-[105px] font-semibold leading-none tracking-[-4px]">
+        {/* 2. Name — the big one. Fluid scale prevents overflow on narrow screens */}
+        <motion.div variants={fadeUp} className="flex flex-wrap items-baseline gap-2 sm:gap-4 md:gap-5 mt-1 md:-mt-5 md:-ml-1">
+          <span className="font-inter text-[42px] sm:text-[64px] md:text-[105px] font-semibold leading-none tracking-[-1px] md:tracking-[-4px]">
             Bhargavi
           </span>
-          <span className="font-noto text-[102px] font-light leading-none italic tracking-[-0.04em] scale-y-110 origin-bottom">
+          <span className="font-noto text-[40px] sm:text-[62px] md:text-[102px] font-light leading-none italic tracking-[-0.04em] scale-y-110 origin-bottom">
             Chaudhary
           </span>
         </motion.div>
 
-        {/* 3. Spacing */}
-        <div className="h-12" />
+        <div className="h-6 md:h-12" />
 
-        {/* Left column content wrapper to separate text flow from absolute graphics */}
+        {/* Left column content wrapper */}
         <div className="max-w-2xl flex flex-col">
           <motion.p
             variants={fadeUp}
-            className="font-inter text-[30px] font-regular tracking-[-1px] leading-none text-left"
+            className="font-inter text-[17px] sm:text-[22px] md:text-[30px] font-regular tracking-[-0.5px] md:tracking-[-1px] leading-snug md:leading-none text-left"
           >
             Web Developer / UI.UX Designer / Visual Identity / Software Developer
           </motion.p>
 
           <motion.p
             variants={fadeUp}
-            className="font-inter text-[25px] font-medium mt-10 tracking-[-1px] text-left"
+            className="font-inter text-[15px] sm:text-[19px] md:text-[25px] font-medium mt-5 md:mt-10 tracking-[-0.5px] md:tracking-[-1px] text-left"
           >
             I build seamless digital experiences & create products with clean design.
           </motion.p>
 
-          {/* Adjusted ONLY this margin to shift it down without affecting things below */}
           <motion.p
             variants={fadeUp}
-            className="font-inter text-[30px] font-bold mt-10 tracking-[-1px] text-left"
+            className="font-inter text-[17px] sm:text-[22px] md:text-[30px] font-bold mt-5 md:mt-10 tracking-[-0.5px] md:tracking-[-1px] text-left"
           >
             <a href="mailto:bhargavichaudhary803@gmail.com" className="hover:underline">
               Work With Me!
@@ -110,24 +107,24 @@ export default function Hero() {
           </motion.p>
         </div>
 
-        {/* Right graphic - explicitly pulled right without breaking text flow */}
+        {/* Right graphic — sits inline below text on mobile, pulled up/right on desktop */}
         <motion.div
           variants={scaleIn}
-          className="flex justify-end items-center space-x-[15px] mt-[-240px]"
+          className="flex justify-center md:justify-end items-center mt-8 md:mt-[-240px]"
         >
           <Image
             src="/g1.png"
             alt=""
             width={260}
             height={260}
-            className="object-contain"
+            className="object-contain w-[160px] h-[160px] sm:w-[200px] sm:h-[200px] md:w-[260px] md:h-[260px]"
           />
         </motion.div>
 
-        {/* Social icons - right aligned */}
+        {/* Social icons — centered below on mobile, right-shifted on desktop like before */}
         <motion.div
           variants={iconContainer}
-          className="flex justify-center items-center space-x-[15px] mt-[-80px] ml-[500px]"
+          className="flex justify-center md:ml-[500px] items-center gap-4 md:gap-0 md:space-x-[15px] mt-6 md:mt-[-80px]"
         >
           <motion.a
             variants={iconItem}
@@ -135,7 +132,7 @@ export default function Hero() {
             aria-label="Email"
             className="opacity-90 hover:opacity-60 transition-opacity"
           >
-            <Image src="/3.png" alt="Email" width={40} height={40} />
+            <Image src="/3.png" alt="Email" width={40} height={40} className="w-8 h-8 md:w-10 md:h-10" />
           </motion.a>
           <motion.a
             variants={iconItem}
@@ -145,7 +142,7 @@ export default function Hero() {
             aria-label="GitHub"
             className="opacity-90 hover:opacity-60 transition-opacity"
           >
-            <Image src="/2.png" alt="GitHub" width={40} height={40} />
+            <Image src="/2.png" alt="GitHub" width={40} height={40} className="w-8 h-8 md:w-10 md:h-10" />
           </motion.a>
           <motion.a
             variants={iconItem}
@@ -155,10 +152,9 @@ export default function Hero() {
             aria-label="LinkedIn"
             className="opacity-90 hover:opacity-60 transition-opacity"
           >
-            <Image src="/1.png" alt="LinkedIn" width={40} height={40} />
+            <Image src="/1.png" alt="LinkedIn" width={40} height={40} className="w-8 h-8 md:w-10 md:h-10" />
           </motion.a>
         </motion.div>
-
       </motion.div>
     </section>
   );
