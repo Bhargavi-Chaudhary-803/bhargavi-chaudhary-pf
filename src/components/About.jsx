@@ -39,47 +39,51 @@ export default function About() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
-        className="max-w-7xl mx-auto mt-[50px]"
+        className="max-w-7xl mx-auto mt-6 md:mt-[50px]"
       >
-
-        {/* 1. Left aligned: "Hi! I am" */}
-        <motion.div variants={fadeUp} className="flex justify-center items-baseline gap-5 mt-8">
-          <span className="font-inter text-[95px] font-semibold tracking-[-2px]">
+        {/* Heading */}
+        <motion.div variants={fadeUp} className="flex justify-center items-baseline gap-2 sm:gap-4 md:gap-5 mt-4 md:mt-8">
+          <span className="font-inter text-[40px] sm:text-[64px] md:text-[95px] font-semibold tracking-[-1px] md:tracking-[-2px]">
             About
           </span>
-          <span className="font-noto text-[80px] font-light leading-none italic tracking-[-4px] scale-y-[1.2] origin-bottom inline-block">
+          <span className="font-noto text-[36px] sm:text-[56px] md:text-[80px] font-light leading-none italic tracking-[-2px] md:tracking-[-4px] scale-y-[1.2] origin-bottom inline-block">
             Me
           </span>
         </motion.div>
 
-        <motion.div variants={fadeUp} className="flex justify-center items-baseline gap-5 mt-[-20px]">
-          <span className="font-inter text-[20px] font-semibold tracking-[-1px]">
+        <motion.div variants={fadeUp} className="flex justify-center items-baseline gap-5 mt-2 md:mt-[-20px]">
+          <span className="font-inter text-[15px] sm:text-[18px] md:text-[20px] font-semibold tracking-[-0.5px] md:tracking-[-1px]">
             Currently in Jaipur, India
           </span>
         </motion.div>
 
-        <motion.div variants={fadeUp} className="flex justify-center items-center gap-2 mt-4">
-          <span className="font-inter text-[32px] font-normal tracking-[-2px] text-center leading-tight">
-            “Crafting scalable web applications, intuitive user experiences, <br />digital  solutions & many more...”
+        {/* Quote — br removed on mobile so it wraps naturally instead of
+            breaking mid-phrase at desktop-tuned points */}
+        <motion.div variants={fadeUp} className="flex justify-center items-center gap-2 mt-4 px-2">
+          <span className="font-inter text-[19px] sm:text-[24px] md:text-[32px] font-normal tracking-[-0.5px] md:tracking-[-2px] text-center leading-snug md:leading-tight">
+            "Crafting scalable web applications, intuitive user experiences,
+            <br className="hidden md:inline" /> digital solutions & many more..."
           </span>
         </motion.div>
 
-        <motion.div variants={fadeUp} className="flex justify-center items-center gap-2 mt-6">
-          <span className="font-inter text-[26px] font-regular tracking-[-1.5px] text-center leading-tight">
-            A CS engineering student at Manipal University Jaipur, building at the <br /> intersection of clean engineering and intentional design. I care deeply about <br /> how things are made, not just that they work, but that they feel right.
+        <motion.div variants={fadeUp} className="flex justify-center items-center gap-2 mt-4 md:mt-6 px-2">
+          <span className="font-inter text-[15px] sm:text-[19px] md:text-[26px] font-regular tracking-[-0.5px] md:tracking-[-1.5px] text-center leading-snug md:leading-tight">
+            A CS engineering student at Manipal University Jaipur, building at the
+            <br className="hidden md:inline" /> intersection of clean engineering and intentional design. I care deeply about
+            <br className="hidden md:inline" /> how things are made, not just that they work, but that they feel right.
           </span>
         </motion.div>
 
-        <motion.div variants={scaleIn} className="flex justify-center items-center space-x-[15px] mt-[15px]">
+        <motion.div variants={scaleIn} className="flex justify-center items-center mt-6 md:mt-[15px]">
           <Image
             src="/g2.png"
             alt=""
             width={400}
             height={400}
-            className="object-contain"
+            className="object-contain w-[240px] h-[240px] sm:w-[320px] sm:h-[320px] md:w-[400px] md:h-[400px]"
           />
         </motion.div>
       </motion.div>
-    </section >
+    </section>
   );
 }

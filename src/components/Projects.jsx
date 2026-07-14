@@ -48,8 +48,6 @@ const projects = [
   },
 ];
 
-// Semantic icon per tech tag — recognizable at a glance without
-// pulling in brand logos.
 const TECH_ICONS = {
   Python: Code2,
   FastAPI: Zap,
@@ -135,7 +133,7 @@ function ProjectCard({ project }) {
     <motion.div
       variants={cardItem}
       whileHover={{ y: -4 }}
-      className="group flex flex-col border-3 border-black rounded-2xl overflow-hidden transition-all duration-200 hover:border-black"
+      className="group flex flex-col border-2 md:border-3 border-black rounded-2xl overflow-hidden transition-all duration-200 hover:border-black"
     >
       {/* Image */}
       <div className="relative w-full aspect-[4/3] bg-black/[0.02] overflow-hidden border-b-2 border-black/40">
@@ -150,7 +148,6 @@ function ProjectCard({ project }) {
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
           />
         ) : (
-          /* Kept the fallback box at a clean fixed aspect ratio so empty cards still look uniform */
           <div className="w-full h-full border border-dashed border-black/15 flex flex-col items-center justify-center gap-2 text-black/30">
             <ImageOff size={22} strokeWidth={1.5} />
             <span className="font-inter text-[12px] tracking-wide uppercase">
@@ -161,19 +158,19 @@ function ProjectCard({ project }) {
       </div>
 
       {/* Content */}
-      <div className="flex flex-col flex-1 p-6">
-        <h3 className="font-inter text-[22px] font-bold tracking-[-0.5px] text-black">
+      <div className="flex flex-col flex-1 p-5 md:p-6">
+        <h3 className="font-inter text-[19px] md:text-[22px] font-bold tracking-[-0.3px] md:tracking-[-0.5px] text-black">
           {project.title}
         </h3>
-        <p className="font-inter text-[13px] text-black/40 mt-1">
+        <p className="font-inter text-[12px] md:text-[13px] text-black/40 mt-1">
           {project.tagline}
         </p>
 
-        <p className="font-inter text-[15px] leading-relaxed text-black mt-4">
+        <p className="font-inter text-[14px] md:text-[15px] leading-relaxed text-black mt-3 md:mt-4">
           {project.description}
         </p>
 
-        <div className="flex items-center gap-2 mt-auto pt-6">
+        <div className="flex items-center gap-2 mt-auto pt-5 md:pt-6">
           <a
             href={project.github}
             target="_blank"
@@ -200,7 +197,7 @@ function ProjectCard({ project }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="px-6 pt-24 mt-[-170px] pb-32 bg-transparent">
+    <section id="projects" className="px-6 pt-16 md:pt-24 mt-0 md:mt-[-170px] pb-20 md:pb-32 bg-transparent">
       <motion.div
         variants={container}
         initial="hidden"
@@ -208,23 +205,22 @@ export default function Projects() {
         viewport={{ once: true, amount: 0.15 }}
         className="max-w-7xl mx-auto"
       >
-
-        <motion.div variants={fadeUp} className="flex justify-center items-baseline gap-5">
-          <span className="font-inter text-[95px] md:text-[95px] font-semibold tracking-[-2px] text-black">
+        <motion.div variants={fadeUp} className="flex justify-center items-baseline gap-2 sm:gap-4 md:gap-5">
+          <span className="font-inter text-[36px] sm:text-[60px] md:text-[95px] font-semibold tracking-[-1px] md:tracking-[-2px] text-black">
             Projects I've
           </span>
-          <span className="font-noto text-[80px] md:text-[90px] font-light italic leading-none tracking-[-3px] scale-y-[1.15] origin-bottom inline-block text-black">
+          <span className="font-noto text-[32px] sm:text-[52px] md:text-[90px] font-light italic leading-none tracking-[-1.5px] md:tracking-[-3px] scale-y-[1.15] origin-bottom inline-block text-black">
             Built
           </span>
         </motion.div>
-        <motion.div variants={fadeUp} className="flex justify-center gap-5 mt-[-8px] mb-16">
-          <span className="font-inter text-[20px] font-semibold tracking-[-1px] text-black">
+        <motion.div variants={fadeUp} className="flex justify-center gap-5 mt-2 md:mt-[-8px] mb-10 md:mb-16 px-4 text-center">
+          <span className="font-inter text-[15px] sm:text-[18px] md:text-[20px] font-semibold tracking-[-0.5px] md:tracking-[-1px] text-black">
             My Production-ready projects that solve real problems.
           </span>
         </motion.div>
 
         {/* Grid */}
-        <motion.div variants={cardGrid} className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <motion.div variants={cardGrid} className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8">
           {projects.map((project) => (
             <ProjectCard key={project.title} project={project} />
           ))}

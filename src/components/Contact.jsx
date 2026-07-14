@@ -81,17 +81,17 @@ function ContactPill({ icon, label, href }) {
       target="_blank"
       rel="noopener noreferrer"
       whileHover={{ y: -2 }}
-      className="group flex items-center gap-3 border border-black rounded-full py-3 pl-3 pr-5 transition-colors duration-150 hover:border-black"
+      className="group flex items-center gap-3 border border-black rounded-full py-3 pl-3 pr-5 transition-colors duration-150 hover:border-black min-w-0"
     >
       <span className="flex items-center justify-center w-8 h-8 rounded-full bg-black text-white shrink-0">
         {icon}
       </span>
-      <span className="font-inter text-[15px] font-medium text-black truncate">
+      <span className="font-inter text-[14px] md:text-[15px] font-medium text-black truncate">
         {label}
       </span>
       <ArrowUpRight
         size={15}
-        className="ml-auto text-black transition-all duration-150 group-hover:text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        className="ml-auto shrink-0 text-black transition-all duration-150 group-hover:text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
       />
     </motion.a>
   );
@@ -145,8 +145,8 @@ function VisitorCounter() {
   }, []);
 
   return (
-    <motion.div variants={fadeUp} className="flex items-center justify-center">
-      <span className="font-inter font-regular text-[20px] text-black tracking-[-1px]">
+    <motion.div variants={fadeUp} className="flex items-center justify-center text-center px-4">
+      <span className="font-inter font-regular text-[15px] md:text-[20px] text-black tracking-[-0.5px] md:tracking-[-1px]">
         This page has had "{""}
         {status === "ready" ? (
           <span className="font-bold text-black">
@@ -155,7 +155,7 @@ function VisitorCounter() {
         ) : status === "error" ? (
           <span className="font-bold text-black tracking-[-1px]">—</span>
         ) : (
-          <Loader2 size={20} className="font-regular inline animate-spin text-black align-middle mx-1 tracking-[-2px]" />
+          <Loader2 size={18} className="font-regular inline animate-spin text-black align-middle mx-1 tracking-[-2px]" />
         )}{""}
         " visitors, & you're the latest!
       </span>
@@ -175,7 +175,6 @@ export default function Contact() {
     setStatus("submitting");
 
     try {
-      // Using Web3Forms (Free, no registration required to test immediately)
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
@@ -183,7 +182,7 @@ export default function Contact() {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "134601ee-2797-491a-a967-af130e9f7945", // Get a free key at web3forms.com
+          access_key: "134601ee-2797-491a-a967-af130e9f7945",
           name: form.name,
           email: form.email,
           message: form.message,
@@ -204,7 +203,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative px-6 pt-24 pb-32 mt-[-60px] overflow-hidden">
+    <section id="contact" className="relative px-6 pt-16 md:pt-24 pb-24 md:pb-32 mt-0 md:mt-[-60px] overflow-hidden">
       <motion.div
         variants={container}
         initial="hidden"
@@ -213,20 +212,20 @@ export default function Contact() {
         className="max-w-5xl mx-auto relative"
       >
         {/* Header */}
-        <motion.div variants={fadeUp} className="flex justify-center items-baseline gap-4 flex-wrap">
-          <span className="font-inter text-[95px] md:text-[95px] font-semibold tracking-[-2px] text-black">
+        <motion.div variants={fadeUp} className="flex justify-center items-baseline gap-2 sm:gap-3 md:gap-4 flex-wrap">
+          <span className="font-inter text-[40px] sm:text-[64px] md:text-[95px] font-semibold tracking-[-1px] md:tracking-[-2px] text-black">
             Get In
           </span>
-          <span className="font-noto text-[80px] md:text-[88px] font-light italic leading-none tracking-[-2px] scale-y-[1.15] origin-bottom inline-block text-black">
+          <span className="font-noto text-[36px] sm:text-[56px] md:text-[88px] font-light italic leading-none tracking-[-1px] md:tracking-[-2px] scale-y-[1.15] origin-bottom inline-block text-black">
             Touch!
           </span>
         </motion.div>
         <motion.span
           variants={fadeUp}
-          className="font-inter flex flex-col items-center justify-center text-center text-[20px] font-semibold tracking-[-1px]"
+          className="font-inter flex flex-col items-center justify-center text-center text-[15px] sm:text-[18px] md:text-[20px] font-semibold tracking-[-0.5px] md:tracking-[-1px] px-4 mt-2"
         >
           Whether it's an opportunity, a collaboration, or just a conversation, I'm always open for a fresh discussion!
-          <br />
+          <br className="hidden md:inline" />
           Pick your preferred channel.
         </motion.span>
 
@@ -235,6 +234,7 @@ export default function Contact() {
           <VisitorCounter />
         </motion.div>
 
+        {/* Decorative graphic — desktop only, was already hidden below lg */}
         <motion.div
           variants={scaleIn}
           className="hidden lg:block absolute top-1/2 right-[calc(-53vw+50%)] -translate-y-1/2 w-[270px] h-[270px] opacity-90 pointer-events-none"
@@ -242,7 +242,7 @@ export default function Contact() {
           <Image src="/g5.png" alt="" fill className="object-contain" />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-10 md:mt-16">
           {/* Left: direct links */}
           <motion.div variants={pillList} className="flex flex-col gap-3 justify-start">
             <ContactPill icon={<Mail size={15} />} label={EMAIL} href={`mailto:${EMAIL}`} />
@@ -253,33 +253,33 @@ export default function Contact() {
           {/* Right: direct endpoint form submission */}
           <motion.div
             variants={fadeUp}
-            className="border border-black rounded-2xl overflow-hidden min-h-[380px] flex flex-col bg-white"
+            className="border border-black rounded-2xl overflow-hidden min-h-[340px] md:min-h-[380px] flex flex-col bg-white"
           >
-            <div className="border-b border-black px-6 py-4">
-              <h3 className="font-inter text-[16px] font-semibold text-black">
+            <div className="border-b border-black px-5 md:px-6 py-4">
+              <h3 className="font-inter text-[15px] md:text-[16px] font-semibold text-black">
                 Send your message directly
               </h3>
             </div>
 
             {status === "success" ? (
               <div className="flex-1 flex flex-col items-center justify-center p-6 text-center animate-fadeIn">
-                <CheckCircle2 size={44} className="text-black mb-3" strokeWidth={1.5} />
-                <h4 className="font-inter font-bold text-[18px] text-black">Message Sent!</h4>
-                <p className="font-inter text-[14px] text-black/60 mt-1 max-w-[280px]">
+                <CheckCircle2 size={40} className="text-black mb-3" strokeWidth={1.5} />
+                <h4 className="font-inter font-bold text-[17px] md:text-[18px] text-black">Message Sent!</h4>
+                <p className="font-inter text-[13px] md:text-[14px] text-black/60 mt-1 max-w-[280px]">
                   Thanks for reaching out, Bhargavi. I'll review this and get back to you shortly.
                 </p>
                 <button
                   onClick={() => setStatus("idle")}
-                  className="mt-6 font-inter text-[13px] font-medium underline uppercase tracking-wider text-black/50 hover:text-black"
+                  className="mt-6 font-inter text-[12px] md:text-[13px] font-medium underline uppercase tracking-wider text-black/50 hover:text-black"
                 >
                   Send another message
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="p-6 flex flex-col gap-5 flex-1 justify-between">
-                <div className="flex flex-col gap-5">
+              <form onSubmit={handleSubmit} className="p-5 md:p-6 flex flex-col gap-4 md:gap-5 flex-1 justify-between">
+                <div className="flex flex-col gap-4 md:gap-5">
                   <div>
-                    <label className="font-inter font-bold text-[15px] uppercase tracking-wide text-black">
+                    <label className="font-inter font-bold text-[13px] md:text-[15px] uppercase tracking-wide text-black">
                       Name
                     </label>
                     <input
@@ -295,7 +295,7 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label className="font-inter font-bold text-[15px] uppercase tracking-wide text-black">
+                    <label className="font-inter font-bold text-[13px] md:text-[15px] uppercase tracking-wide text-black">
                       Email
                     </label>
                     <input
@@ -311,7 +311,7 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label className="font-inter font-bold text-[15px] uppercase tracking-wide text-black">
+                    <label className="font-inter font-bold text-[13px] md:text-[15px] uppercase tracking-wide text-black">
                       Message
                     </label>
                     <textarea
@@ -327,11 +327,11 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-2 mt-4">
+                <div className="flex flex-col gap-2 mt-2 md:mt-4">
                   <button
                     type="submit"
                     disabled={status === "submitting"}
-                    className="self-start flex items-center gap-2 bg-black text-white rounded-full pl-5 pr-4 py-2.5 font-inter text-[14px] font-medium transition-all duration-150 hover:-translate-y-0.5 disabled:opacity-70 disabled:hover:translate-y-0"
+                    className="self-start flex items-center gap-2 bg-black text-white rounded-full pl-5 pr-4 py-2.5 font-inter text-[13px] md:text-[14px] font-medium transition-all duration-150 hover:-translate-y-0.5 disabled:opacity-70 disabled:hover:translate-y-0"
                   >
                     {status === "submitting" ? (
                       <>
@@ -346,7 +346,7 @@ export default function Contact() {
                     )}
                   </button>
                   {status === "error" && (
-                    <p className="text-red-600 font-inter text-[13px] mt-1">
+                    <p className="text-red-600 font-inter text-[12px] md:text-[13px] mt-1">
                       Something went wrong. Please try again or use a direct link.
                     </p>
                   )}
