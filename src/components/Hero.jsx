@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import SprayText from "@/components/SprayText";
 
 const container = {
   hidden: {},
@@ -62,24 +63,24 @@ export default function Hero() {
       >
         {/* 1. "Hi! I am" — centered on mobile, left-aligned on desktop like before */}
         <motion.div variants={fadeUp} className="flex items-baseline justify-center md:justify-start gap-2 mt-4 md:mt-8">
-          <span className="font-inter text-[30px] sm:text-[44px] md:text-[60px] font-normal tracking-[-0.5px] md:tracking-[-2px]">
+          <span className="font-inter text-[38px] sm:text-[54px] md:text-[78px] font-normal tracking-[-0.5px] md:tracking-[-2px]">
             Hi! I
           </span>
-          <span className="font-noto text-[28px] sm:text-[42px] md:text-[58px] font-normal italic tracking-[-0.04em] scale-y-110 origin-bottom">
+          <span className="font-noto text-[36px] sm:text-[52px] md:text-[76px] font-normal italic tracking-[-0.04em] scale-y-110 origin-bottom">
             am
           </span>
         </motion.div>
 
-        {/* 2. Name — forced onto one line on mobile via whitespace-nowrap + a
-            font size small enough to fit a 360px viewport with room to spare */}
+        {/* 2. Name — "Bhargavi" only on mobile (whitespace-nowrap so it never
+            wraps), "Chaudhary" reappears from md up alongside it. */}
         <motion.div
           variants={fadeUp}
           className="flex flex-nowrap items-baseline justify-center md:justify-start gap-1 sm:gap-3 md:gap-5 mt-1 md:-mt-5 md:-ml-1"
         >
-          <span className="font-inter text-[26px] sm:text-[46px] md:text-[105px] font-semibold leading-none tracking-[-0.5px] md:tracking-[-4px] whitespace-nowrap">
+          <span className="font-inter text-[46px] sm:text-[70px] md:text-[130px] font-semibold leading-none tracking-[-0.5px] md:tracking-[-4px] whitespace-nowrap">
             Bhargavi
           </span>
-          <span className="font-noto text-[24px] sm:text-[44px] md:text-[102px] font-light leading-none italic tracking-[-0.04em] scale-y-110 origin-bottom whitespace-nowrap">
+          <span className="hidden md:inline font-noto md:text-[126px] font-light leading-none italic tracking-[-0.04em] scale-y-110 origin-bottom whitespace-nowrap">
             Chaudhary
           </span>
         </motion.div>
@@ -95,12 +96,18 @@ export default function Hero() {
             Web Developer / UI.UX Designer / Visual Identity / Software Developer
           </motion.p>
 
-          <motion.p
+          {/* "I build seamless..." — sprays in as particles, left to right,
+              then settles into the real, crisp, selectable line. */}
+          <motion.div
             variants={fadeUp}
-            className="font-inter text-[14px] sm:text-[19px] md:text-[25px] font-medium mt-5 md:mt-10 tracking-[-0.5px] md:tracking-[-1px] text-center md:text-left"
+            className="mt-5 md:mt-10 w-full flex justify-center md:justify-start"
           >
-            I build seamless digital experiences & create products with clean design.
-          </motion.p>
+            <SprayText
+              as="p"
+              text="I build seamless digital experiences & create products with clean design."
+              className="font-inter text-[14px] sm:text-[19px] md:text-[25px] font-medium tracking-[-0.5px] md:tracking-[-1px] text-center md:text-left"
+            />
+          </motion.div>
 
           {/* "Work With Me!" — a distinct tappable pill CTA on mobile since a
               plain underlined link is an easy miss-tap target on touch; desktop
