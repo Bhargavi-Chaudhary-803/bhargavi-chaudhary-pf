@@ -102,7 +102,7 @@ export default function Hero() {
             variants={fadeUp}
             className="mt-5 md:mt-10 w-full flex justify-center md:justify-start"
           >
-            <SprayText
+            <Spraytext
               as="p"
               text="I build seamless digital experiences & create products with clean design."
               className="font-inter text-[14px] sm:text-[19px] md:text-[25px] font-medium tracking-[-0.5px] md:tracking-[-1px] text-center md:text-left"
