@@ -60,10 +60,7 @@ export default function Experience() {
         viewport={{ once: true, amount: 0.2 }}
         className="max-w-7xl mx-auto mt-6 md:mt-[50px]"
       >
-        {/* Heading — "Where I've" and "worked" stack on mobile with tight
-            line spacing (via negative margin) instead of sitting side by side,
-            since "Where I've worked" doesn't fit one line at readable sizes.
-            Desktop keeps the original single-line layout untouched. */}
+        
         <motion.div
           variants={fadeUp}
           className="flex flex-col md:flex-row justify-center items-center md:items-baseline gap-0 md:gap-5 mt-4 md:mt-8"
@@ -76,7 +73,7 @@ export default function Experience() {
           </span>
         </motion.div>
 
-        <motion.div variants={fadeUp} className="flex justify-center items-baseline gap-5 mt-3 md:mt-[-20px] px-4 text-center">
+        <motion.div variants={fadeUp} className="flex justify-center items-baseline gap-5 mt-3 md:mt-[-1px] px-4 text-center">
           <span className="font-inter text-[15px] sm:text-[18px] md:text-[20px] font-semibold tracking-[-0.5px] md:tracking-[-1px]">
             A timeline of the teams, projects, and communities I've worked with.
           </span>
