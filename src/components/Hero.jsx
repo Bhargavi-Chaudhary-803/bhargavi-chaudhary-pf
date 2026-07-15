@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import SprayText from "@/components/SprayText.jsx";
 
 const container = {
   hidden: {},
@@ -96,18 +95,12 @@ export default function Hero() {
             Web Developer / UI.UX Designer / Visual Identity / Software Developer
           </motion.p>
 
-          {/* "I build seamless..." — sprays in as particles, left to right,
-              then settles into the real, crisp, selectable line. */}
-          <motion.div
+          <motion.p
             variants={fadeUp}
-            className="mt-5 md:mt-10 w-full flex justify-center md:justify-start"
+            className="font-inter text-[14px] sm:text-[19px] md:text-[25px] font-medium mt-5 md:mt-10 tracking-[-0.5px] md:tracking-[-1px] text-center md:text-left"
           >
-            <SprayText
-              as="p"
-              text="I build seamless digital experiences & create products with clean design."
-              className="font-inter text-[14px] sm:text-[19px] md:text-[25px] font-medium tracking-[-0.5px] md:tracking-[-1px] text-center md:text-left"
-            />
-          </motion.div>
+            I build seamless digital experiences & create products with clean design.
+          </motion.p>
 
           {/* "Work With Me!" — a distinct tappable pill CTA on mobile since a
               plain underlined link is an easy miss-tap target on touch; desktop
