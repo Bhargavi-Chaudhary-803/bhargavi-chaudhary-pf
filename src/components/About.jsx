@@ -51,7 +51,7 @@ export default function About() {
           </span>
         </motion.div>
 
-        <motion.div variants={fadeUp} className="flex justify-center items-baseline gap-5 mt-2 md:mt-[-20px]">
+        <motion.div variants={fadeUp} className="flex justify-center items-baseline gap-5 mt-[-5px] md:mt-[-20px]">
           <span className="font-inter text-[15px] sm:text-[18px] md:text-[20px] font-semibold tracking-[-0.5px] md:tracking-[-1px]">
             Currently in Jaipur, India
           </span>
@@ -74,7 +74,7 @@ export default function About() {
           </span>
         </motion.div>
 
-        <motion.div variants={scaleIn} className="flex justify-center items-center mt-6 md:mt-[15px]">
+        <motion.div variants={scaleIn} className="flex justify-center items-center mt-[-50px] md:mt-[-50px]">
           <Image
             src="/g2.png"
             alt=""

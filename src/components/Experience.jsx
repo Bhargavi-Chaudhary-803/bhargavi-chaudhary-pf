@@ -60,15 +60,15 @@ export default function Experience() {
         viewport={{ once: true, amount: 0.2 }}
         className="max-w-7xl mx-auto mt-6 md:mt-[50px]"
       >
-        
+
         <motion.div
           variants={fadeUp}
-          className="flex flex-col md:flex-row justify-center items-center md:items-baseline gap-0 md:gap-5 mt-4 md:mt-8"
+          className="flex flex-row justify-center items-baseline gap-2 md:gap-5 mt-4 md:mt-8 balance-text"
         >
-          <span className="font-inter text-[40px] sm:text-[64px] md:text-[95px] font-semibold tracking-[-1px] md:tracking-[-2px] leading-[1.05]">
+          <span className="font-inter text-[28px] sm:text-[64px] md:text-[95px] font-semibold tracking-[-1px] md:tracking-[-2px] leading-[1.05]">
             Where I've
           </span>
-          <span className="font-noto text-[36px] sm:text-[56px] md:text-[80px] font-light leading-[0.9] italic tracking-[-1.5px] md:tracking-[-4px] scale-y-[1.2] origin-bottom inline-block -mt-2 sm:-mt-3 md:mt-0">
+          <span className="font-noto text-[26px] sm:text-[56px] md:text-[80px] font-light leading-[0.9] italic tracking-[-1.5px] md:tracking-[-4px] scale-y-[1.2] origin-bottom inline-block">
             worked
           </span>
         </motion.div>

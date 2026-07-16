@@ -53,8 +53,7 @@ const iconItem = {
 
 export default function Hero() {
   return (
-    <section className="min-h-screen px-6 pt-16 bg-transparent relative">
-      <motion.div
+<section className="min-h-screen px-6 pt-8 md:pt-16 bg-transparent relative">      <motion.div
         variants={container}
         initial="hidden"
         animate="show"
@@ -74,12 +73,11 @@ export default function Hero() {
             wraps), "Chaudhary" reappears from md up alongside it. */}
         <motion.div
           variants={fadeUp}
-          className="flex flex-nowrap items-baseline justify-center md:justify-start gap-1 sm:gap-3 md:gap-5 mt-1 md:-mt-5 md:-ml-1"
-        >
+          className="flex flex-nowrap items-baseline justify-center md:justify-start gap-2.5 sm:gap-3 md:gap-5 -mt-1 md:-mt-5 md:-ml-1"        >
           <span className="font-inter text-[46px] sm:text-[70px] md:text-[130px] font-semibold leading-none tracking-[-0.5px] md:tracking-[-4px] whitespace-nowrap">
             Bhargavi
           </span>
-          <span className="hidden md:inline font-noto md:text-[126px] font-light leading-none italic tracking-[-0.04em] scale-y-110 origin-bottom whitespace-nowrap">
+          <span className="font-noto text-[44px] sm:text-[68px] md:text-[126px] font-light leading-none italic tracking-[-0.04em] scale-y-110 origin-bottom whitespace-nowrap">
             Chaudhary
           </span>
         </motion.div>

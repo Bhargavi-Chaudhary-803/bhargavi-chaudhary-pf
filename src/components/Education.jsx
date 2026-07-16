@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const education = [
   {
-    level: "Senior Secondary · 12th Grade",
+    level: "Senior Secondary Schooling",
     institution: "The Wisdom Global School",
     detail: "Completed higher secondary schooling with PCM before moving on to engineering.",
     duration: "Class XII",
@@ -14,7 +14,7 @@ const education = [
     image: "s1.png",
   },
   {
-    level: "B.Tech · Computer Science Engineering",
+    level: "B.Tech · CSE",
     institution: "Manipal University Jaipur",
     detail: "Coursework spanning DSA, systems, and full-stack development, alongside design and product work on the side.",
     duration: "2025 — Present",
@@ -136,7 +136,7 @@ export default function Education() {
             Education
           </span>
         </motion.div>
-        <motion.div variants={fadeUp} className="flex justify-center gap-5 mt-2 md:mt-[-8px] mb-10 md:mb-16 px-4 text-center">
+        <motion.div variants={fadeUp} className="flex justify-center gap-5 mt-[-5px] md:mt-[-8px] mb-10 md:mb-16 px-4 text-center">
           <span className="font-inter text-[15px] sm:text-[18px] md:text-[20px] font-semibold tracking-[-0.5px] md:tracking-[-1px] text-black">
             Grades, credentials, and the institutions I've called home.
           </span>

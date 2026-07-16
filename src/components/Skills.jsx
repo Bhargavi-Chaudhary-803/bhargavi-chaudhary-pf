@@ -79,13 +79,12 @@ export default function Skills() {
   const allIcons = [...row1, ...row2];
 
   return (
-    <section className="min-h-screen px-6 mt-16 md:mt-40 bg-transparent w-full max-w-[100vw] overflow-x-hidden">
-      <motion.div
+<section className="min-h-screen px-6 -mt-12 md:mt-5 bg-transparent w-full max-w-[100vw] overflow-x-hidden">      <motion.div
         variants={container}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="max-w-7xl mx-auto mt-10 md:mt-[100px]"
+        className="max-w-7xl mx-auto mt-10 md:mt-8"
       >
 
         {/* 1. Heading — scales down on mobile and wraps if needed, stays
@@ -102,7 +101,7 @@ export default function Skills() {
           </span>
         </motion.div>
 
-        <motion.div variants={fadeUp} className="flex justify-center gap-5 mt-2 md:mt-[-20px] px-6 text-center">
+        <motion.div variants={fadeUp} className="flex justify-center gap-5 mt-[-5px] md:mt-[-20px] px-6 text-center">
           <span className="font-inter text-[14px] sm:text-[18px] md:text-[20px] font-semibold tracking-[-0.5px] md:tracking-[-1px]">
             A set of technologies & framework I have been learning, loving & utilizing in projects!
           </span>
