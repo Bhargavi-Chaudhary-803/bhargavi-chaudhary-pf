@@ -65,10 +65,11 @@ export default function Experience() {
           variants={fadeUp}
           className="flex flex-row justify-center items-baseline gap-2 md:gap-5 mt-4 md:mt-8 balance-text"
         >
-          <span className="font-inter text-[28px] sm:text-[64px] md:text-[95px] font-semibold tracking-[-1px] md:tracking-[-2px] leading-[1.05]">
+          <span className="font-inter text-[36px] sm:text-[64px] md:text-[95px] font-semibold tracking-[-1px] md:tracking-[-2px] leading-[1.05]">
             Where I've
           </span>
-          <span className="font-noto text-[26px] sm:text-[56px] md:text-[80px] font-light leading-[0.9] italic tracking-[-1.5px] md:tracking-[-4px] scale-y-[1.2] origin-bottom inline-block">
+
+          <span className="font-noto text-[34px] sm:text-[56px] md:text-[80px] font-light leading-[0.9] italic tracking-[-1.5px] md:tracking-[-4px] scale-y-[1.2] origin-bottom inline-block">
             worked
           </span>
         </motion.div>
