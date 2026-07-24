@@ -7,6 +7,8 @@ import { ArrowUpRight } from "lucide-react";
 const container = {
   hidden: {},
   show: {
+    // This scales down the entire layout to 85% of its original size
+    scale: 0.75, 
     transition: {
       staggerChildren: 0.12,
       delayChildren: 0.1,
@@ -53,7 +55,8 @@ const iconItem = {
 
 export default function Hero() {
   return (
-    <section className="min-h-screen px-6 pt-8 md:pt-16 bg-transparent relative">      <motion.div
+    <section className="min-h-screen flex items-center justify-center bg-transparent relative">      
+    <motion.div
       variants={container}
       initial="hidden"
       animate="show"
@@ -137,7 +140,7 @@ export default function Hero() {
       {/* Social icons — centered on mobile, right-shifted on desktop like before */}
       <motion.div
         variants={iconContainer}
-        className="flex justify-center md:ml-[500px] items-center gap-5 md:gap-0 md:space-x-[15px] mt-6 md:mt-[-80px]"
+        className="flex justify-center md:ml-[380px] items-center gap-5 md:gap-0 md:space-x-[15px] mt-6 md:mt-[-80px]"
       >
         <motion.a
           variants={iconItem}

@@ -6,8 +6,10 @@ import { motion } from "framer-motion";
 const container = {
   hidden: {},
   show: {
+    // This scales down the entire layout to 85% of its original size
+    scale: 0.75, 
     transition: {
-      staggerChildren: 0.15,
+      staggerChildren: 0.12,
       delayChildren: 0.1,
     },
   },
@@ -33,7 +35,7 @@ const scaleIn = {
 
 export default function About() {
   return (
-    <section className="min-h-screen px-6 pt-16 bg-transparent">
+    <section className="min-h-screen flex items-center justify-center bg-transparent">
       <motion.div
         variants={container}
         initial="hidden"

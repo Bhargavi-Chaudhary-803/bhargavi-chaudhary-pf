@@ -7,8 +7,10 @@ import LeetCodeStats from "./LeetCodeStats";
 const container = {
   hidden: {},
   show: {
+    // This scales down the entire layout to 85% of its original size
+    scale: 0.75,
     transition: {
-      staggerChildren: 0.15,
+      staggerChildren: 0.12,
       delayChildren: 0.1,
     },
   },
@@ -79,7 +81,8 @@ export default function Skills() {
   const allIcons = [...row1, ...row2];
 
   return (
-<section className="min-h-screen px-6 -mt-12 md:mt-5 bg-transparent w-full max-w-[100vw] overflow-x-hidden">      <motion.div
+    <section className="min-h-screen flex items-center justify-center bg-transparent w-full max-w-[100vw] overflow-x-hidden">
+      <motion.div
         variants={container}
         initial="hidden"
         whileInView="show"
@@ -166,13 +169,14 @@ export default function Skills() {
         {/* Decorative graphic — desktop only. Removed on mobile per request;
             replaced with a minimal dot divider so the section transition
             still feels intentional without extra image weight. */}
-        <motion.div variants={scaleIn} className="hidden md:flex justify-start w-full mt-[-350px]">
+        <motion.div variants={scaleIn} className="hidden md:flex justify-start w-full mt-[-340px]">
           <Image
             src="/g3.png"
             alt=""
-            width={400}
-            height={400}
-            className="object-contain -ml-[20px] sm:-ml-[40px] md:-ml-[90px]"
+            width={350}
+            height={3400}
+            // Changed md:-ml-[90px] to md:-ml-[160px] to pull it more to the left
+            className="object-contain -ml-[40px] sm:-ml-[80px] md:-ml-[160px]"
           />
         </motion.div>
 
