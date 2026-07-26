@@ -33,13 +33,13 @@ const scaleIn = {
 
 export default function About() {
   return (
-    <section className="min-h-screen px-6 pt-16 bg-transparent">
+    <section className="min-h-[90vh] px-6 pt-8 md:pt-12 bg-transparent overflow-hidden">
       <motion.div
         variants={container}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
-        className="max-w-7xl mx-auto mt-6 md:mt-[50px]"
+        className="max-w-7xl mx-auto mt-4 md:mt-[40px] scale-[0.9] origin-top"
       >
         {/* Heading */}
         <motion.div variants={fadeUp} className="flex justify-center items-baseline gap-2 sm:gap-4 md:gap-5 mt-4 md:mt-8">
@@ -57,8 +57,7 @@ export default function About() {
           </span>
         </motion.div>
 
-        {/* Quote — br removed on mobile so it wraps naturally instead of
-            breaking mid-phrase at desktop-tuned points */}
+        {/* Quote */}
         <motion.div variants={fadeUp} className="flex justify-center items-center gap-2 mt-4 px-2">
           <span className="font-inter text-[19px] sm:text-[24px] md:text-[32px] font-normal tracking-[-0.5px] md:tracking-[-2px] text-center leading-snug md:leading-tight">
             "Crafting scalable web applications, intuitive user experiences,

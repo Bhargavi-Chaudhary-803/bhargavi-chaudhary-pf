@@ -15,7 +15,7 @@ const container = {
 };
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 25 },
   show: {
     opacity: 1,
     y: 0,
@@ -42,7 +42,7 @@ const timeline = {
 };
 
 const timelineItem = {
-  hidden: { opacity: 0, x: -24 },
+  hidden: { opacity: 0, x: -22 },
   show: {
     opacity: 1,
     x: 0,
@@ -52,46 +52,45 @@ const timelineItem = {
 
 export default function Experience() {
   return (
-    <section className="min-h-screen px-6 bg-transparent">
+    <section className="min-h-screen px-5 mt-20 bg-transparent">
       <motion.div
         variants={container}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="max-w-7xl mx-auto mt-6 md:mt-[50px]"
+        className="max-w-6xl mx-auto mt-5 md:mt-[45px]"
       >
 
         <motion.div
           variants={fadeUp}
-          className="flex flex-row justify-center items-baseline gap-2 md:gap-5 mt-4 md:mt-8 balance-text"
+          className="flex flex-row justify-center items-baseline gap-2 md:gap-4.5 mt-3.5 md:mt-7 balance-text"
         >
-          <span className="font-inter text-[36px] sm:text-[64px] md:text-[95px] font-semibold tracking-[-1px] md:tracking-[-2px] leading-[1.05]">
+          <span className="font-inter text-[32px] sm:text-[58px] md:text-[85px] font-semibold tracking-[-1px] md:tracking-[-2px] leading-[1.05]">
             Where I've
           </span>
 
-          <span className="font-noto text-[34px] sm:text-[56px] md:text-[80px] font-light leading-[0.9] italic tracking-[-1.5px] md:tracking-[-4px] scale-y-[1.2] origin-bottom inline-block">
+          <span className="font-noto text-[30px] sm:text-[50px] md:text-[72px] font-light leading-[0.9] italic tracking-[-1.5px] md:tracking-[-3.5px] scale-y-[1.2] origin-bottom inline-block">
             worked
           </span>
         </motion.div>
 
-        <motion.div variants={fadeUp} className="flex justify-center items-baseline gap-5 mt-3 md:mt-[-1px] px-4 text-center">
-          <span className="font-inter text-[15px] sm:text-[18px] md:text-[20px] font-semibold tracking-[-0.5px] md:tracking-[-1px]">
+        <motion.div variants={fadeUp} className="flex justify-center items-baseline gap-4.5 mt-2.5 md:mt-[-1px] px-3.5 text-center">
+          <span className="font-inter text-[13.5px] sm:text-[16px] md:text-[18px] font-semibold tracking-[-0.5px] md:tracking-[-1px]">
             A timeline of the teams, projects, and communities I've worked with.
           </span>
         </motion.div>
 
-        {/* Timeline — center-aligned stack on mobile (title, subtitle, date
-            all centered), original left-title/right-date row layout on desktop */}
+        {/* Timeline */}
         <motion.div
           variants={timeline}
-          className="max-w-5xl mx-auto space-y-6 md:space-y-[12px] p-5 sm:p-10 md:p-19 font-inter text-black text-[16px] md:text-[22px] leading-snug tracking-[-0.5px] md:tracking-[-1px] mt-8 md:mt-[-35px]"
+          className="max-w-4xl mx-auto space-y-5 md:space-y-[11px] p-4.5 sm:p-9 md:p-16 font-inter text-black text-[14.5px] md:text-[20px] leading-snug tracking-[-0.5px] md:tracking-[-1px] mt-7 md:mt-[-31px]"
         >
           <motion.div variants={timelineItem} className="flex flex-col items-center text-center md:flex-row md:justify-between md:items-start md:text-left gap-1 md:gap-0">
             <div>
               <h3 className="font-bold tracking-tight">Open Source Contributor</h3>
               <p className="font-normal text-black/80">GirlScript Summer of Code (GSSoC)</p>
             </div>
-            <span className="font-normal text-black/60 md:text-black md:text-right whitespace-nowrap md:ml-8 text-[13px] md:text-[22px]">
+            <span className="font-normal text-black/60 md:text-black md:text-right whitespace-nowrap md:ml-7 text-[11.5px] md:text-[20px]">
               Mar 2026 — Present
             </span>
           </motion.div>
@@ -101,7 +100,7 @@ export default function Experience() {
               <h3 className="font-bold tracking-tight">UI/UX & Frontend Development Intern</h3>
               <p className="font-normal text-black/80">Zèle Labs</p>
             </div>
-            <span className="font-normal text-black/60 md:text-black md:text-right whitespace-nowrap md:ml-8 text-[13px] md:text-[22px]">
+            <span className="font-normal text-black/60 md:text-black md:text-right whitespace-nowrap md:ml-7 text-[11.5px] md:text-[20px]">
               Feb 2026 — Present
             </span>
           </motion.div>
@@ -111,22 +110,20 @@ export default function Experience() {
               <h3 className="font-bold tracking-tight">Graphic Designer & Social Media Intern</h3>
               <p className="font-normal text-black/80">TBLS Edu Federation</p>
             </div>
-            <span className="font-normal text-black/60 md:text-black md:text-right whitespace-nowrap md:ml-8 text-[13px] md:text-[22px]">
+            <span className="font-normal text-black/60 md:text-black md:text-right whitespace-nowrap md:ml-7 text-[11.5px] md:text-[20px]">
               Jan 2024 — Apr 2024
             </span>
           </motion.div>
         </motion.div>
 
-        {/* Decorative graphic — desktop only. Mobile gets a small themed
-            icon-in-circle instead, keeping the section from feeling bare
-            without adding image weight. */}
-        <motion.div variants={scaleIn} className="hidden md:flex justify-end items-center mt-[-180px]">
-          <Image src="/g4.png" alt="" width={200} height={200} className="object-contain" />
+        {/* Decorative graphic */}
+        <motion.div variants={scaleIn} className="hidden md:flex justify-end items-center mt-[-162px]">
+          <Image src="/g4.png" alt="" width={180} height={180} className="object-contain" />
         </motion.div>
 
-        <motion.div variants={scaleIn} className="md:hidden flex justify-center mt-8 mb-2">
-          <div className="w-14 h-14 rounded-full border border-black/15 flex items-center justify-center">
-            <Briefcase size={22} strokeWidth={1.5} className="text-black/40" />
+        <motion.div variants={scaleIn} className="md:hidden flex justify-center mt-7 mb-2">
+          <div className="w-12 h-12 rounded-full border border-black/15 flex items-center justify-center">
+            <Briefcase size={20} strokeWidth={1.5} className="text-black/40" />
           </div>
         </motion.div>
       </motion.div>

@@ -79,7 +79,8 @@ export default function Skills() {
   const allIcons = [...row1, ...row2];
 
   return (
-<section className="min-h-screen px-6 -mt-12 md:mt-5 bg-transparent w-full max-w-[100vw] overflow-x-hidden">      <motion.div
+    <section className="min-h-screen px-6 -mt-12 md:mt-5 bg-transparent w-full max-w-[100vw] overflow-x-hidden scale-90 origin-top">
+      <motion.div
         variants={container}
         initial="hidden"
         whileInView="show"
@@ -87,8 +88,7 @@ export default function Skills() {
         className="max-w-7xl mx-auto mt-10 md:mt-8"
       >
 
-        {/* 1. Heading — scales down on mobile and wraps if needed, stays
-            centered and one line on desktop like before */}
+        {/* 1. Heading */}
         <motion.div variants={fadeUp} className="flex flex-wrap justify-center items-baseline gap-2 sm:gap-4 md:gap-5 mt-4 md:mt-8 px-2">
           <span className="font-inter text-[36px] sm:text-[60px] md:text-[95px] font-semibold tracking-[-1px] md:tracking-[-2px]">
             What I
@@ -112,9 +112,7 @@ export default function Skills() {
 
           <div className="w-full pt-8 pb-8 md:pt-10 md:pb-10">
 
-            {/* MOBILE: single 4-col grid so all 16 icons wrap cleanly with
-                zero horizontal overflow. Hover tooltips are replaced with a
-                small always-visible label, since hover never fires on touch. */}
+            {/* MOBILE GRID */}
             <motion.div
               variants={iconRow}
               className="grid grid-cols-4 gap-x-3 gap-y-6 justify-items-center md:hidden"
@@ -131,7 +129,7 @@ export default function Skills() {
               ))}
             </motion.div>
 
-            {/* DESKTOP: original two-row hover layout, completely unchanged */}
+            {/* DESKTOP LAYOUT */}
             <div className="hidden md:flex md:flex-col md:gap-7 md:items-center md:justify-center">
               <motion.div variants={iconRow} className="flex items-center justify-center gap-5">
                 {row1.map((tech) => (
@@ -161,11 +159,8 @@ export default function Skills() {
             </div>
           </div>
         </div>
-        {/* --- 2-ROW GRID LOGO SECTION END --- */}
 
-        {/* Decorative graphic — desktop only. Removed on mobile per request;
-            replaced with a minimal dot divider so the section transition
-            still feels intentional without extra image weight. */}
+        {/* Decorative graphic — desktop only */}
         <motion.div variants={scaleIn} className="hidden md:flex justify-start w-full mt-[-350px]">
           <Image
             src="/g3.png"
