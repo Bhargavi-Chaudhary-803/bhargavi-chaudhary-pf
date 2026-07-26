@@ -20,10 +20,9 @@ export default function Home() {
 
     setTimeout(() => {
       setLoading(false);
-    }, 700); // matches transition duration
+    }, 700);
   }, []);
 
-  // Callback ref guarantees React gets a valid function and plays media immediately on mount
   const videoRef = useCallback((node) => {
     if (node) {
       node.play().catch((err) => {
@@ -34,7 +33,6 @@ export default function Home() {
   }, [handleVideoEnd]);
 
   useEffect(() => {
-    // Safety fallback: dismiss preloader if video fails/stalls after 5s
     const fallbackTimer = setTimeout(() => {
       handleVideoEnd();
     }, 5000);
@@ -46,8 +44,9 @@ export default function Home() {
     <>
       {loading && (
         <div
-          className={`fixed inset-0 z-[9999] w-screen h-screen overflow-hidden bg-white transition-opacity duration-700 ${fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"
-            }`}
+          className={`fixed inset-0 z-[9999] w-screen h-screen overflow-hidden bg-black select-none flex items-center justify-center transition-opacity duration-700 ${
+            fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"
+          }`}
         >
           <video
             ref={videoRef}
@@ -56,55 +55,49 @@ export default function Home() {
             playsInline
             onEnded={handleVideoEnd}
             onError={handleVideoEnd}
-            className="w-full h-full object-cover pointer-events-none"
+            className="w-full h-full object-contain object-center pointer-events-none p-2 sm:p-4"
           >
             <source src="/preloaderw.webm" type="video/webm" />
             <source src="/preloaderm.mp4" type="video/mp4" />
           </video>
         </div>
       )}
+
       <div
-        className={`transition-opacity duration-700 ${loading ? "opacity-0" : "opacity-100"
-          }`}
+        className={`min-h-screen w-full transition-opacity duration-700 ${
+          loading ? "opacity-0" : "opacity-100"
+        }`}
       >
         <Navbar />
 
-        <main className="w-full">
-          <div id="hero" className="w-full">
+        <main className="w-full mx-auto max-w-7xl 2xl:max-w-[1400px] px-4 sm:px-6 lg:px-8 scroll-pt-[var(--nav-height,120px)]">
+          <section id="hero" className="w-full">
             <Hero />
-          </div>
+          </section>
 
-          <div id="about" className="w-full">
+          <section id="about" className="w-full py-12 md:py-20">
             <About />
-          </div>
+          </section>
 
-          <div
-            id="skills"
-            className="w-full"
-            style={{ scrollMarginTop: "var(--nav-height, 140px)" }}
-          >
+          <section id="skills" className="w-full py-12 md:py-20">
             <Skills />
-          </div>
+          </section>
 
-          <div id="education" className="w-full">
+          <section id="education" className="w-full py-12 md:py-20">
             <Education />
-          </div>
+          </section>
 
-          <div
-            id="experience"
-            className="w-full"
-            style={{ scrollMarginTop: "var(--nav-height, 140px)" }}
-          >
+          <section id="experience" className="w-full py-12 md:py-20">
             <Experience />
-          </div>
+          </section>
 
-          <div id="projects" className="w-full">
+          <section id="projects" className="w-full py-12 md:py-20">
             <Projects />
-          </div>
+          </section>
 
-          <div id="contact" className="w-full">
+          <section id="contact" className="w-full py-12 md:py-20">
             <Contact />
-          </div>
+          </section>
         </main>
       </div>
     </>

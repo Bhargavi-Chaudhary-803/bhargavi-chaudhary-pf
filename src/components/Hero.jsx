@@ -53,17 +53,17 @@ const iconItem = {
 
 export default function Hero() {
   return (
-    <section className="min-h-[80vh] px-6 pt-6 md:pt-10 bg-transparent relative overflow-hidden">
+    <section className="min-h-[80vh] px-6 pt-6 md:pt-10 bg-transparent relative overflow-hidden flex flex-col justify-center items-center md:block">
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
-        className="max-w-7xl mx-auto mt-4 md:mt-[30px] relative flex flex-col items-center md:items-stretch scale-[0.8] origin-top"
+        className="max-w-7xl w-full mx-auto mt-0 md:mt-[30px] relative flex flex-col items-center md:items-stretch scale-[0.85] sm:scale-90 md:scale-[0.8] origin-center md:origin-top"
       >
         {/* 1. "Hi! I am" */}
         <motion.div
           variants={fadeUp}
-          className="flex items-baseline justify-center md:justify-start gap-2 mt-4 md:mt-8"
+          className="flex items-baseline justify-center md:justify-start gap-2 mt-2 md:mt-8 text-center md:text-left"
         >
           <span className="font-inter text-[38px] sm:text-[54px] md:text-[78px] font-normal tracking-[-0.5px] md:tracking-[-2px]">
             Hi! I
@@ -76,7 +76,7 @@ export default function Hero() {
         {/* 2. Name */}
         <motion.div
           variants={fadeUp}
-          className="flex flex-nowrap items-baseline justify-center md:justify-start gap-2.5 sm:gap-3 md:gap-5 -mt-1 md:-mt-5 md:-ml-1"
+          className="flex flex-nowrap items-baseline justify-center md:justify-start gap-2.5 sm:gap-3 md:gap-5 -mt-1 md:-mt-5 md:-ml-1 text-center md:text-left"
         >
           <span className="font-inter text-[clamp(32px,10vw,130px)] font-semibold leading-none tracking-[-0.5px] md:tracking-[-4px] whitespace-nowrap">
             Bhargavi
@@ -89,22 +89,22 @@ export default function Hero() {
         <div className="h-6 md:h-12" />
 
         {/* Left column content */}
-        <div className="max-w-2xl flex flex-col items-center md:items-start">
+        <div className="max-w-2xl flex flex-col items-center md:items-start text-center md:text-left">
           <motion.p
             variants={fadeUp}
-            className="font-inter text-[16px] sm:text-[22px] md:text-[30px] font-regular tracking-[-0.5px] md:tracking-[-1px] leading-snug md:leading-none text-center md:text-left"
+            className="font-inter text-[16px] sm:text-[22px] md:text-[30px] font-regular tracking-[-0.5px] md:tracking-[-1px] leading-snug md:leading-none"
           >
             Web Developer / UI.UX Designer / Visual Identity / Software Developer
           </motion.p>
 
           <motion.p
             variants={fadeUp}
-            className="font-inter text-[14px] sm:text-[19px] md:text-[25px] font-medium mt-5 md:mt-10 tracking-[-0.5px] md:tracking-[-1px] text-center md:text-left"
+            className="font-inter text-[14px] sm:text-[19px] md:text-[25px] font-medium mt-5 md:mt-10 tracking-[-0.5px] md:tracking-[-1px]"
           >
             I build seamless digital experiences & create products with clean design.
           </motion.p>
 
-          <motion.div variants={fadeUp} className="mt-6 md:mt-10">
+          <motion.div variants={fadeUp} className="mt-6 md:mt-10 flex justify-center md:justify-start">
             <a
               href="mailto:bhargavichaudhary803@gmail.com"
               className="md:hidden inline-flex items-center gap-2 bg-black text-white rounded-full pl-5 pr-4 py-3 font-inter text-[15px] font-semibold tracking-[-0.3px] active:scale-95 transition-transform"
