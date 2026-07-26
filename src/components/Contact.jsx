@@ -225,7 +225,7 @@ export default function Contact() {
           className="font-inter flex flex-col items-center justify-center text-center text-[13.5px] sm:text-[16px] md:text-[18px] font-semibold tracking-[-0.5px] md:tracking-[-1px] px-3.5 mt-2"
         >
           Whether it's an opportunity, a collaboration, or just a conversation, I'm always open for a fresh discussion!
-          <br className="hidden md:inline" />
+          <br />
           Pick your preferred channel.
         </motion.span>
 
