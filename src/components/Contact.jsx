@@ -203,7 +203,10 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative px-5 pt-14 md:pt-22 pb-22 md:pb-28 mt-0 md:mt-[-54px] overflow-hidden">
+    <section
+      id="contact"
+      className="relative px-5 pt-14 md:pt-22 pb-22 md:pb-28 mt-0 md:mt-[-54px] overflow-visible"
+    >
       <motion.div
         variants={container}
         initial="hidden"
@@ -234,12 +237,23 @@ export default function Contact() {
           <VisitorCounter />
         </motion.div>
 
+        {/* Decorative Sticker - Desktop */}
         {/* Decorative graphic — desktop only */}
         <motion.div
           variants={scaleIn}
-          className="hidden lg:block absolute top-1/2 right-[calc(-48vw+50%)] -translate-y-1/2 w-[240px] h-[240px] opacity-90 pointer-events-none"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="hidden lg:block absolute top-[62%] -right-90 -translate-y-1/2 z-20 pointer-events-none"
         >
-          <Image src="/g5.png" alt="" fill className="object-contain" />
+          <Image
+            src="/g5.png"
+            alt=""
+            width={270}
+            height={270}
+            priority
+            className="object-contain"
+          />
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4.5 md:gap-7 mt-9 md:mt-14">
