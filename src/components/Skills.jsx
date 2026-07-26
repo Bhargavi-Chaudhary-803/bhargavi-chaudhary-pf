@@ -79,13 +79,13 @@ export default function Skills() {
   const allIcons = [...row1, ...row2];
 
   return (
-    <section className="min-h-screen px-6 -mt-12 md:mt-5 bg-transparent w-full max-w-[100vw] overflow-x-hidden scale-90 origin-top">
+    <section className="min-h-screen px-6 -mt-12 md:mt-5 bg-transparent w-full max-w-[100vw] overflow-visible scale-90 origin-top">
       <motion.div
         variants={container}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="max-w-7xl mx-auto mt-10 md:mt-8"
+        className="relative max-w-7xl mx-auto mt-10 md:mt-8 overflow-visible"
       >
 
         {/* 1. Heading */}
@@ -161,13 +161,19 @@ export default function Skills() {
         </div>
 
         {/* Decorative graphic — desktop only */}
-        <motion.div variants={scaleIn} className="hidden md:flex justify-start w-full mt-[-350px]">
+        {/* Decorative graphic — desktop only */}
+        {/* Decorative graphic — desktop only */}
+        <motion.div
+          variants={scaleIn}
+          className="hidden md:block absolute -left-15 top-[-30px] z-10 pointer-events-none"
+        >
           <Image
             src="/g3.png"
             alt=""
-            width={400}
-            height={400}
-            className="object-contain -ml-[20px] sm:-ml-[40px] md:-ml-[90px]"
+            width={300}
+            height={300}
+            priority
+            className="object-contain w-[400px] h-auto"
           />
         </motion.div>
 
