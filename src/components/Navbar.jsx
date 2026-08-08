@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { motion, LayoutGroup } from "framer-motion";
-import { User, Code2, GraduationCap, Briefcase, FolderGit2, Mail } from "lucide-react";
+import { motion, LayoutGroup, AnimatePresence } from "framer-motion";
+import { User, Code2, GraduationCap, Briefcase, FolderGit2, Mail, Menu, X } from "lucide-react";
 
 const NAV_ITEMS = [
   { id: "about", label: "About", Icon: User },
@@ -18,18 +18,15 @@ const ALL_IDS = ["hero", ...NAV_ITEMS.map((item) => item.id)];
 
 export default function Navbar() {
   const [active, setActive] = useState("hero");
+  const [menuOpen, setMenuOpen] = useState(false);
   const pillRef = useRef(null);
 
-  // Measure the actual navbar height (top offset + pill height + a little
-  // breathing room) and expose it as a CSS variable so every section can
-  // use it for scroll-margin-top. On mobile the nav moves to the bottom,
-  // so we only need this offset applied on md+ (see page.js scroll-margin usage).
   useEffect(() => {
     const updateNavHeight = () => {
       if (pillRef.current) {
         const pillHeight = pillRef.current.offsetHeight;
-        const topOffset = 24; // matches `top-6`
-        const buffer = 32; // extra breathing room below the navbar
+        const topOffset = 24;
+        const buffer = 32;
         document.documentElement.style.setProperty(
           "--nav-height",
           `${pillHeight + topOffset + buffer}px`
@@ -64,6 +61,7 @@ export default function Navbar() {
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setMenuOpen(false);
   };
 
   return (
@@ -72,7 +70,7 @@ export default function Navbar() {
       <div className="hidden md:flex fixed top-6 inset-x-0 z-50 justify-center pointer-events-none">
         <div
           ref={pillRef}
-          className="pointer-events-auto flex items-center gap-1.5 rounded-full border border-black/10 bg-white/70 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.06)] px-3 py-2.5"
+          className="pointer-events-auto flex items-center gap-3 rounded-full border border-black/10 bg-white/70 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.06)] px-6 py-2.5"
         >
           <button
             onClick={() => scrollTo("hero")}
@@ -82,16 +80,16 @@ export default function Navbar() {
             <Image src="/saturn.png" alt="" width={34} height={34} className="object-contain" />
           </button>
 
-          <span className="w-px h-6 bg-black/10 mx-1 shrink-0" />
+          <span className="w-px h-6 bg-black/10 mx-2 shrink-0" />
 
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-3">
             {NAV_ITEMS.map(({ id, label, Icon }) => {
               const isActive = active === id;
               return (
                 <button
                   key={id}
                   onClick={() => scrollTo(id)}
-                  className="relative flex items-center justify-center w-11 h-11 rounded-full group outline-none focus-visible:ring-2 focus-visible:ring-black/20"
+                  className="relative flex items-center justify-center w-12 h-12 rounded-full group outline-none focus-visible:ring-2 focus-visible:ring-black/20"
                   aria-label={label}
                 >
                   {isActive && (
@@ -118,46 +116,90 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* ---------- MOBILE: fixed bottom icon bar ---------- */}
-      {/* Hover tooltips don't work on touch, so labels are dropped; the active
-          icon gets a filled black dot underneath instead of a sliding pill,
-          since layout animations are more prone to jank on mobile GPUs. */}
-      <div className="md:hidden fixed bottom-0 inset-x-0 z-50 w-full max-w-[100vw] overflow-x-hidden pb-[env(safe-area-inset-bottom)] pointer-events-none">
-        <div className="pointer-events-auto flex items-center justify-around w-full border-t border-black/10 bg-white/90 backdrop-blur-md px-1 py-2 box-border">
-          <button
-            onClick={() => scrollTo("hero")}
-            className="flex flex-col items-center justify-center w-9 h-9 rounded-full outline-none"
-            aria-label="Back to top"
-          >
-            <Image src="/saturn.png" alt="" width={24} height={24} className="object-contain" />
-          </button>
-
-          {NAV_ITEMS.map(({ id, label, Icon }) => {
-            const isActive = active === id;
-            return (
-              <button
-                key={id}
-                onClick={() => scrollTo(id)}
-                className="relative flex flex-col items-center justify-center gap-1 w-9 h-9 outline-none"
-                aria-label={label}
+      {/* ---------- MOBILE: hamburger menu ---------- */}
+      <div className="md:hidden fixed top-6 right-6 z-50">
+        <button
+          onClick={() => setMenuOpen((v) => !v)}
+          className="flex items-center justify-center w-11 h-11 rounded-full border border-black/10 bg-white/80 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.08)] outline-none"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+        >
+          <AnimatePresence mode="wait" initial={false}>
+            {menuOpen ? (
+              <motion.span
+                key="close"
+                initial={{ rotate: -90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: 90, opacity: 0 }}
+                transition={{ duration: 0.2 }}
               >
-                <Icon
-                  size={19}
-                  strokeWidth={1.75}
-                  className={isActive ? "text-black" : "text-black/40"}
-                />
-                {isActive && (
-                  <motion.span
-                    layoutId="active-dot-mobile"
-                    className="absolute -bottom-1 w-1 h-1 rounded-full bg-black"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </button>
-            );
-          })}
-        </div>
+                <X size={22} strokeWidth={1.75} className="text-black" />
+              </motion.span>
+            ) : (
+              <motion.span
+                key="menu"
+                initial={{ rotate: 90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: -90, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Menu size={22} strokeWidth={1.75} className="text-black" />
+              </motion.span>
+            )}
+          </AnimatePresence>
+        </button>
       </div>
+
+      {/* Mobile dropdown panel */}
+      <AnimatePresence>
+        {menuOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden fixed inset-0 z-40 bg-black/20 backdrop-blur-[2px]"
+              onClick={() => setMenuOpen(false)}
+            />
+
+            {/* Panel */}
+            <motion.div
+              initial={{ opacity: 0, y: -12, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -12, scale: 0.96 }}
+              transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+              className="md:hidden fixed top-20 right-6 z-50 w-56 rounded-2xl border border-black/10 bg-white/95 backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.12)] overflow-hidden"
+            >
+              <button
+                onClick={() => scrollTo("hero")}
+                className="w-full flex items-center gap-3 px-4 py-3 hover:bg-black/5 transition-colors"
+              >
+                <Image src="/saturn.png" alt="" width={20} height={20} className="object-contain" />
+                <span className="text-[15px] font-inter font-medium text-black/80">Top</span>
+              </button>
+
+              <span className="block h-px bg-black/10 mx-4" />
+
+              {NAV_ITEMS.map(({ id, label, Icon }, i) => {
+                const isActive = active === id;
+                return (
+                  <button
+                    key={id}
+                    onClick={() => scrollTo(id)}
+                    className={`w-full flex items-center gap-3 px-4 py-3 transition-colors ${
+                      isActive ? "bg-black text-white" : "hover:bg-black/5 text-black/80"
+                    }`}
+                  >
+                    <Icon size={18} strokeWidth={1.75} />
+                    <span className="text-[15px] font-inter font-medium">{label}</span>
+                  </button>
+                );
+              })}
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </LayoutGroup>
   );
 }
