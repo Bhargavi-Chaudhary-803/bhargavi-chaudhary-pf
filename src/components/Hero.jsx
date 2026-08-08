@@ -75,7 +75,7 @@ export default function Hero() {
   variants={fadeUp}
   className="flex items-baseline justify-between gap-2 mt-8 md:mt-8 text-center md:text-left w-full"
 >
-  <div className="flex items-baseline gap-2 justify-start md:justify-center ml-60 md:ml-45 mb-[-24px] md:mb-[-96px]">
+  <div className="flex items-baseline gap-2 justify-start md:justify-center ml-54 md:ml-45 mb-[-24px] md:mb-[-96px]">
     <span className="font-inter text-[78px] md:text-[78px] font-normal tracking-[-2px] md:tracking-[-2px]">
       Hi! I
     </span>
@@ -86,9 +86,9 @@ export default function Hero() {
 
   {/* Social icons */}
   <motion.div
-  variants={iconContainer}
-  className="flex items-center gap-0 md:gap-0 space-x-[15px] md:space-x-[15px] mr-58 md:mr-14 lg:mr-24 md:-translate-x-6 lg:-translate-x-10"
->
+    variants={iconContainer}
+    className="flex items-center gap-0 md:gap-0 space-x-[15px] md:space-x-[15px] mr-4 md:mr-24 lg:mr-44"
+  >
     <motion.a
       variants={iconItem}
       href="https://www.linkedin.com/in/bhargavi-chaudhary-55384936a/"
