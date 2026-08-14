@@ -135,7 +135,7 @@ export default function Hero() {
           {/* 4. Social icons below tagline */}
           <motion.div
             variants={iconContainer}
-            className="flex items-center justify-center gap-6 mt-8 md:mt-16"
+            className="flex items-center justify-center gap-8 md:gap-6 mt-10 md:mt-16"
           >
             <motion.a
               variants={iconItem}
@@ -145,7 +145,7 @@ export default function Hero() {
               aria-label="LinkedIn"
               className="opacity-90 hover:opacity-60 transition-opacity"
             >
-              <Image src="/1.png" alt="LinkedIn" width={40} height={40} className="w-10 h-10" />
+              <Image src="/1.png" alt="LinkedIn" width={56} height={56} className="w-14 h-14 md:w-10 md:h-10" />
             </motion.a>
             <motion.a
               variants={iconItem}
@@ -155,7 +155,7 @@ export default function Hero() {
               aria-label="GitHub"
               className="opacity-90 hover:opacity-60 transition-opacity"
             >
-              <Image src="/2.png" alt="GitHub" width={40} height={40} className="w-10 h-10" />
+              <Image src="/2.png" alt="GitHub" width={56} height={56} className="w-14 h-14 md:w-10 md:h-10" />
             </motion.a>
             <motion.a
               variants={iconItem}
@@ -163,12 +163,12 @@ export default function Hero() {
               aria-label="Email"
               className="opacity-90 hover:opacity-60 transition-opacity"
             >
-              <Image src="/3.png" alt="Email" width={40} height={40} className="w-10 h-10" />
+              <Image src="/3.png" alt="Email" width={56} height={56} className="w-14 h-14 md:w-10 md:h-10" />
             </motion.a>
           </motion.div>
         </div>
 
-        {/* 5. Mobile-Only Graphic (g11.png) - Shifted down with mt-16 */}
+        {/* 5. Mobile-Only Graphic (g11.png) */}
         <motion.div
           variants={scaleIn}
           className="block md:hidden mt-16 flex justify-center items-center"
