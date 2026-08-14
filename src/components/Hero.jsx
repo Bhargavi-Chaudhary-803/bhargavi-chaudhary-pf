@@ -22,6 +22,15 @@ const fadeUp = {
   },
 };
 
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.85 },
+  show: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
 const iconContainer = {
   hidden: {},
   show: {
@@ -43,7 +52,7 @@ const iconItem = {
 
 export default function Hero() {
   return (
-    <section className="min-h-screen px-6 pt-6 md:pt-10 bg-transparent relative overflow-hidden flex flex-col justify-center items-center">
+    <section className="min-h-screen px-6 pt-2 md:pt-10 bg-transparent relative overflow-hidden flex flex-col justify-center items-center">
       {/* Logo - top left corner */}
       <div className="absolute top-6 left-6 md:top-8 md:left-8 z-10">
         <Image
@@ -59,12 +68,12 @@ export default function Hero() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="w-[1280px] max-w-none md:max-w-7xl md:w-full md:mx-auto relative flex flex-col items-center justify-center scale-[0.32] sm:scale-[0.48] md:scale-[0.8] origin-center"
+        className="-mt-16 sm:-mt-8 md:mt-0 w-[1280px] max-w-none md:max-w-7xl md:w-full md:mx-auto relative flex flex-col items-center justify-center scale-[0.32] sm:scale-[0.48] md:scale-[0.8] origin-center"
       >
-        {/* 1. "Hi! I am" */}
+        {/* 1. "Hi! I am" + Graphic Sticker */}
         <motion.div
           variants={fadeUp}
-          className="flex items-center justify-center gap-2 text-center w-full"
+          className="flex items-center justify-center gap-3 text-center w-full -ml-8"
         >
           <div className="flex items-baseline gap-2 justify-center text-center">
             <span className="font-inter text-[78px] md:text-[78px] font-normal tracking-[-2px] md:tracking-[-2px]">
@@ -74,6 +83,20 @@ export default function Hero() {
               am
             </span>
           </div>
+
+          {/* Sticker Graphic */}
+          <motion.div
+            variants={scaleIn}
+            className="flex justify-center items-center shrink-0 relative"
+          >
+            <Image
+              src="/g1.png"
+              alt=""
+              width={100}
+              height={100}
+              className="object-contain w-[100px] h-[100px] -mt-2"
+            />
+          </motion.div>
         </motion.div>
 
         {/* 2. Name */}
@@ -89,7 +112,7 @@ export default function Hero() {
           </span>
         </motion.div>
 
-        {/* Increased height spacer to shift content down */}
+        {/* Height spacer */}
         <div className="h-8 md:h-10" />
 
         {/* 3. Tagline */}
