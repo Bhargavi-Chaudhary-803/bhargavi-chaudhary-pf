@@ -15,10 +15,12 @@ const notoSerifCondensed = localFont({
   display: "swap",
 });
 
-// Locks the layout viewport to the device width so mobile browsers don't
-// render at a wider "desktop-ish" virtual width and then let the user
-// pinch-zoom/scroll into empty space on the right. maximumScale: 1 +
-// userScalable: false stop pinch-zoom from ever creating that overflow.
+export const metadata = {
+  icons: {
+    icon: "/b1.png",
+  },
+};
+
 export const viewport = {
   width: "device-width",
   initialScale: 1,

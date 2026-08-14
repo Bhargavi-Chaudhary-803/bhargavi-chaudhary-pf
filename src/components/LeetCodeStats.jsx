@@ -15,33 +15,70 @@ const DAY_MS = 24 * 60 * 60 * 1000;
 
 function buildCalendarGrid(submissionCalendar) {
   const counts = {};
+
   Object.entries(submissionCalendar || {}).forEach(([ts, count]) => {
-    const key = new Date(Number(ts) * 1000).toISOString().slice(0, 10);
+    const date = new Date(Number(ts) * 1000);
+    const key = date.toISOString().slice(0, 10);
     counts[key] = (counts[key] || 0) + Number(count);
   });
 
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  const start = new Date(today.getTime() - 364 * DAY_MS);
+  // Start from the beginning of the month 11 months ago.
+  // This keeps the current month aligned automatically.
+  const start = new Date(
+    today.getFullYear(),
+    today.getMonth() - 11,
+    1
+  );
+
+  // Move back to Sunday so the calendar grid is aligned correctly.
   start.setDate(start.getDate() - start.getDay());
 
   const days = [];
-  for (let cursor = new Date(start); cursor <= today; cursor.setDate(cursor.getDate() + 1)) {
+
+  for (
+    let cursor = new Date(start);
+    cursor <= today;
+    cursor.setDate(cursor.getDate() + 1)
+  ) {
     const key = cursor.toISOString().slice(0, 10);
-    days.push({ key, date: new Date(cursor), count: counts[key] || 0 });
+
+    days.push({
+      key,
+      date: new Date(cursor),
+      count: counts[key] || 0,
+    });
   }
 
   const weeks = [];
-  for (let i = 0; i < days.length; i += 7) weeks.push(days.slice(i, i + 7));
 
+  for (let i = 0; i < days.length; i += 7) {
+    const week = days.slice(i, i + 7);
+
+    // Don't add an incomplete future week.
+    if (week.length === 7 || week.some((day) => day.date <= today)) {
+      weeks.push(week);
+    }
+  }
+
+  // Month labels based on actual month/year.
   const monthMarkers = [];
-  let lastMonth = -1;
+  let lastMonthKey = "";
+
   weeks.forEach((week, wi) => {
-    const month = week[0].date.getMonth();
-    if (month !== lastMonth) {
-      monthMarkers.push({ index: wi, label: MONTH_LABELS[month] });
-      lastMonth = month;
+    const date = week[0].date;
+
+    const monthKey = `${date.getFullYear()}-${date.getMonth()}`;
+
+    if (monthKey !== lastMonthKey) {
+      monthMarkers.push({
+        index: wi,
+        label: MONTH_LABELS[date.getMonth()],
+      });
+
+      lastMonthKey = monthKey;
     }
   });
 
@@ -52,10 +89,16 @@ function buildCalendarGrid(submissionCalendar) {
   let bestEnd = -1;
 
   days.forEach((d, i) => {
+    if (d.date > today) return;
+
     if (d.count > 0) {
       totalSubs += d.count;
       activeDays += 1;
-      if (i === 0 || days[i - 1].count === 0) curStart = i;
+
+      if (i === 0 || days[i - 1].count === 0) {
+        curStart = i;
+      }
+
       if (i - curStart > bestEnd - bestStart) {
         bestStart = curStart;
         bestEnd = i;
@@ -64,10 +107,26 @@ function buildCalendarGrid(submissionCalendar) {
   });
 
   const streakKeys = new Set();
-  for (let i = bestStart; i <= bestEnd; i++) streakKeys.add(days[i].key);
-  const maxStreak = bestEnd >= bestStart ? bestEnd - bestStart + 1 : 0;
 
-  return { weeks, monthMarkers, totalSubs, activeDays, maxStreak, streakKeys };
+  if (bestEnd >= bestStart) {
+    for (let i = bestStart; i <= bestEnd; i++) {
+      streakKeys.add(days[i].key);
+    }
+  }
+
+  const maxStreak =
+    bestEnd >= bestStart
+      ? bestEnd - bestStart + 1
+      : 0;
+
+  return {
+    weeks,
+    monthMarkers,
+    totalSubs,
+    activeDays,
+    maxStreak,
+    streakKeys,
+  };
 }
 
 const GREEN_SCALE = [

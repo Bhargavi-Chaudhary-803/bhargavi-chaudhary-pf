@@ -52,7 +52,7 @@ const iconItem = {
 
 export default function Hero() {
   return (
-    <section className="min-h-screen px-2 md:px-6 pt-0 md:pt-10 bg-transparent relative overflow-hidden flex flex-col justify-start md:justify-center items-center">
+    <section className="h-screen px-2 md:px-6 pt-0 md:pt-10 bg-transparent relative overflow-hidden flex flex-col justify-start md:justify-center items-center">
       {/* Logo - top left corner */}
       <div className="absolute top-6 left-6 md:top-8 md:left-8 z-10">
         <Image
@@ -68,7 +68,7 @@ export default function Hero() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="-mt-20 sm:-mt-10 md:mt-0 w-[1280px] max-w-none md:max-w-7xl md:w-full md:mx-auto relative flex flex-col items-center justify-center scale-[0.32] sm:scale-[0.48] md:scale-[0.8] origin-center"
+        className="-mt-32 sm:-mt-10 md:mt-0 w-[1280px] max-w-none md:max-w-7xl md:w-full md:mx-auto relative flex flex-col items-center justify-center scale-[0.32] sm:scale-[0.48] md:scale-[0.8] origin-center"
       >
         {/* Upper Content Block */}
         <div className="-mt-64 sm:-mt-32 md:mt-0 flex flex-col items-center justify-center w-full">
@@ -81,6 +81,7 @@ export default function Hero() {
               <span className="font-inter text-[78px] md:text-[78px] font-normal tracking-[-2px] md:tracking-[-2px]">
                 Hi! I
               </span>
+
               <span className="font-noto text-[76px] md:text-[76px] font-normal italic tracking-[-0.04em] scale-y-110 origin-bottom">
                 am
               </span>
@@ -94,9 +95,9 @@ export default function Hero() {
               <Image
                 src="/g1.png"
                 alt=""
-                width={100}
-                height={100}
-                className="object-contain w-[100px] h-[100px] -mt-2"
+                width={110}
+                height={110}
+                className="object-contain w-[120px] h-[120px] -mt-2"
               />
             </motion.div>
           </motion.div>
@@ -109,7 +110,8 @@ export default function Hero() {
             <span className="font-inter text-[190px] md:text-[190px] font-semibold leading-none tracking-[-4px]">
               BHARGAVI
             </span>
-            <span className="font-noto text-[170px] md:text-[170px] font-light leading-none italic tracking-[-0.04em] scale-y-110 origin-bottom block text-center">
+
+            <span className="font-noto text-[170px] md:text-[170px] font-light leading-none italic tracking-[-0.04em] scale-y-120 origin-bottom block text-center">
               Chaudhary
             </span>
           </motion.div>
@@ -118,10 +120,10 @@ export default function Hero() {
           <div className="h-6 md:h-10" />
 
           {/* 3. Tagline - Strictly 2 lines */}
-          <div className="flex flex-row items-center justify-center text-center w-full">
+          <div className="flex flex-row items-center justify-center text-center w-full mt-6 md:mt-0">
             <motion.p
               variants={fadeUp}
-              className="font-inter text-[38px] md:text-[30px] font-regular tracking-[-1px] md:tracking-[-1px] leading-snug md:leading-tight text-center max-w-none px-2 md:px-0"
+              className="font-inter text-[46px] md:text-[30px] font-regular tracking-[-2px] md:tracking-[-1px] leading-snug md:leading-tight text-center max-w-none px-2 md:px-0"
             >
               <span className="block md:inline whitespace-nowrap">
                 Web Developer / UI.UX Designer /
@@ -145,8 +147,15 @@ export default function Hero() {
               aria-label="LinkedIn"
               className="opacity-90 hover:opacity-60 transition-opacity"
             >
-              <Image src="/1.png" alt="LinkedIn" width={40} height={40} className="w-10 h-10" />
+              <Image
+                src="/1.png"
+                alt="LinkedIn"
+                width={56}
+                height={56}
+                className="w-14 h-14"
+              />
             </motion.a>
+
             <motion.a
               variants={iconItem}
               href="https://github.com/Bhargavi-Chaudhary-803"
@@ -155,20 +164,33 @@ export default function Hero() {
               aria-label="GitHub"
               className="opacity-90 hover:opacity-60 transition-opacity"
             >
-              <Image src="/2.png" alt="GitHub" width={40} height={40} className="w-10 h-10" />
+              <Image
+                src="/2.png"
+                alt="GitHub"
+                width={56}
+                height={56}
+                className="w-14 h-14"
+              />
             </motion.a>
+
             <motion.a
               variants={iconItem}
               href="mailto:bhargavichaudhary803@gmail.com"
               aria-label="Email"
               className="opacity-90 hover:opacity-60 transition-opacity"
             >
-              <Image src="/3.png" alt="Email" width={40} height={40} className="w-10 h-10" />
+              <Image
+                src="/3.png"
+                alt="Email"
+                width={56}
+                height={56}
+                className="w-14 h-14"
+              />
             </motion.a>
           </motion.div>
         </div>
 
-        {/* 5. Mobile-Only Graphic (g11.png) - Shifted down with mt-16 */}
+        {/* 5. Mobile-Only Graphic */}
         <motion.div
           variants={scaleIn}
           className="block md:hidden mt-16 flex justify-center items-center"
@@ -176,9 +198,9 @@ export default function Hero() {
           <Image
             src="/g11.png"
             alt="Illustration"
-            width={440}
-            height={440}
-            className="object-contain w-[440px] h-[440px]"
+            width={500}
+            height={500}
+            className="object-contain w-[500px] h-[500px]"
           />
         </motion.div>
       </motion.div>

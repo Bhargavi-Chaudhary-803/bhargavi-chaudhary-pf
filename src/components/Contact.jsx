@@ -205,7 +205,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative px-5 pt-14 md:pt-22 pb-22 md:pb-28 mt-0 md:mt-[-54px] overflow-visible"
+      className="relative px-5 pt-14 md:pt-22 pb-22 md:pb-28 mt-[-100px] md:mt-[-140px] overflow-visible"
     >
       <motion.div
         variants={container}

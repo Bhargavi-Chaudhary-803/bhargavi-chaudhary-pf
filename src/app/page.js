@@ -1,8 +1,9 @@
-'use client';
+"use client";
 
 import { useState, useEffect, useCallback } from "react";
 
 import Hero from "@/components/Hero";
+import Middle from "@/components/Middle";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
@@ -23,14 +24,17 @@ export default function Home() {
     }, 700);
   }, []);
 
-  const videoRef = useCallback((node) => {
-    if (node) {
-      node.play().catch((err) => {
-        console.warn("Autoplay blocked or failed:", err);
-        handleVideoEnd();
-      });
-    }
-  }, [handleVideoEnd]);
+  const videoRef = useCallback(
+    (node) => {
+      if (node) {
+        node.play().catch((err) => {
+          console.warn("Autoplay blocked or failed:", err);
+          handleVideoEnd();
+        });
+      }
+    },
+    [handleVideoEnd]
+  );
 
   useEffect(() => {
     const fallbackTimer = setTimeout(() => {
@@ -42,10 +46,13 @@ export default function Home() {
 
   return (
     <>
+      {/* Preloader */}
       {loading && (
         <div
           className={`fixed inset-0 z-[9999] w-screen h-screen overflow-hidden bg-black select-none flex items-center justify-center transition-opacity duration-700 ${
-            fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"
+            fadeOut
+              ? "opacity-0 pointer-events-none"
+              : "opacity-100"
           }`}
         >
           <video
@@ -68,33 +75,44 @@ export default function Home() {
           loading ? "opacity-0" : "opacity-100"
         }`}
       >
+        {/* Hamburger Navbar */}
         <Navbar />
 
         <main className="w-full mx-auto max-w-7xl 2xl:max-w-[1400px] px-4 sm:px-6 lg:px-8 scroll-pt-[var(--nav-height,120px)]">
+          {/* Hero */}
           <section id="hero" className="w-full">
             <Hero />
           </section>
 
+          {/* Middle scroll animation */}
+          <Middle />
+
+          {/* About */}
           <section id="about" className="w-full py-12 md:py-20">
             <About />
           </section>
 
+          {/* Skills */}
           <section id="skills" className="w-full py-12 md:py-20">
             <Skills />
           </section>
 
+          {/* Education */}
           <section id="education" className="w-full py-12 md:py-20">
             <Education />
           </section>
 
+          {/* Experience */}
           <section id="experience" className="w-full py-12 md:py-20">
             <Experience />
           </section>
 
+          {/* Projects */}
           <section id="projects" className="w-full py-12 md:py-20">
             <Projects />
           </section>
 
+          {/* Contact */}
           <section id="contact" className="w-full py-12 md:py-20">
             <Contact />
           </section>
