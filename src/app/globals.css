@@ -30,3 +30,17 @@ html, body {
 .animate-fadeIn {
   animation: fadeIn 0.8s ease forwards;
 }
+
+@media (min-width: 768px) {
+  html,
+  body,
+  * {
+    cursor: url("/arrowhead-rounded-outline.svg") 5 3, auto;
+  }
+
+  input,
+  textarea,
+  [contenteditable="true"] {
+    cursor: text;
+  }
+}

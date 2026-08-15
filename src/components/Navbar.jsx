@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { X } from "lucide-react";
 
 const NAV_ITEMS = [
   { id: "hero", label: "Home" },
@@ -41,7 +42,6 @@ const ITEM_VARIANTS = {
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Lock page scrolling while menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
 
@@ -57,7 +57,6 @@ export default function Navbar() {
   const handleNavigation = (id) => {
     setMenuOpen(false);
 
-    // Wait for menu close animation before scrolling
     window.setTimeout(() => {
       document.getElementById(id)?.scrollIntoView({
         behavior: "smooth",
@@ -68,60 +67,47 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Hamburger */}
-      <button
-        type="button"
-        onClick={toggleMenu}
-        aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-        aria-expanded={menuOpen}
-        className="
-          fixed
-          top-6
-          right-6
-          z-[110]
-          flex
-          h-12
-          w-12
-          items-center
-          justify-center
-          rounded-full
-          bg-black
-          text-white
-          shadow-lg
-          outline-none
-          transition-transform
-          duration-300
-          hover:scale-105
-          focus-visible:ring-2
-          focus-visible:ring-white
-          focus-visible:ring-offset-2
-          focus-visible:ring-offset-black
-        "
-      >
-        <AnimatePresence mode="wait" initial={false}>
-          {menuOpen ? (
-            <motion.span
-              key="close"
-              initial={{ opacity: 0, rotate: -90 }}
-              animate={{ opacity: 1, rotate: 0 }}
-              exit={{ opacity: 0, rotate: 90 }}
-              transition={{ duration: 0.2 }}
-            >
-              <X size={24} strokeWidth={1.8} />
-            </motion.span>
-          ) : (
-            <motion.span
-              key="menu"
-              initial={{ opacity: 0, rotate: 90 }}
-              animate={{ opacity: 1, rotate: 0 }}
-              exit={{ opacity: 0, rotate: -90 }}
-              transition={{ duration: 0.2 }}
-            >
-              <Menu size={24} strokeWidth={1.8} />
-            </motion.span>
-          )}
-        </AnimatePresence>
-      </button>
+      {/* Saturn Menu Button */}
+      {!menuOpen && (
+        <button
+          type="button"
+          onClick={toggleMenu}
+          aria-label="Open navigation menu"
+          aria-expanded={false}
+          className="
+            fixed
+            top-6
+            right-6
+            z-[110]
+            flex
+            h-12
+            w-12
+            items-center
+            justify-center
+            outline-none
+            transition-transform
+            duration-300
+            hover:scale-110
+            focus-visible:ring-2
+            focus-visible:ring-white
+          "
+        >
+          <motion.span
+            initial={{ opacity: 0, rotate: 90, scale: 0.7 }}
+            animate={{ opacity: 1, rotate: 0, scale: 1 }}
+            transition={{ duration: 0.25 }}
+            className="flex items-center justify-center"
+          >
+            <Image
+              src="/saturn.png"
+              alt="Open menu"
+              width={48}
+              height={48}
+              className="h-12 w-12 object-contain"
+            />
+          </motion.span>
+        </button>
+      )}
 
       {/* Fullscreen navigation */}
       <AnimatePresence>
@@ -144,6 +130,34 @@ export default function Navbar() {
               bg-black
             "
           >
+            {/* White Close Cross */}
+            <button
+              type="button"
+              onClick={() => setMenuOpen(false)}
+              aria-label="Close navigation menu"
+              className="
+                fixed
+                top-6
+                right-6
+                z-[120]
+                flex
+                h-12
+                w-12
+                items-center
+                justify-center
+                text-white
+                outline-none
+                transition-transform
+                duration-300
+                hover:scale-110
+                hover:opacity-70
+                focus-visible:ring-2
+                focus-visible:ring-white
+              "
+            >
+              <X size={30} strokeWidth={1.8} />
+            </button>
+
             <nav
               aria-label="Main navigation"
               className="

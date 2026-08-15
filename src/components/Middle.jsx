@@ -35,15 +35,16 @@ export default function Middle() {
     <section
       ref={sectionRef}
       className="
-    relative
-    w-full
-    mt-0
-    pt-4
-    pb-24
+        relative
+        w-full
+        mt-0
+        pt-4
+        pb-24
 
-    md:mt-[26rem]
-    lg:mt-[32rem]
-    xl:mt-[38rem]"
+        md:mt-[6rem]
+        lg:mt-[8rem]
+        xl:mt-[10rem]
+      "
     >
       <div className="relative w-full px-6 sm:px-10 md:px-16 lg:px-20">
         {/* Gray text */}
@@ -70,8 +71,9 @@ export default function Middle() {
           {LINES.map((line, index) => (
             <span
               key={line}
-              className={`block ${index === LINES.length - 1 ? "italic" : ""
-                }`}
+              className={`block ${
+                index === LINES.length - 1 ? "italic" : ""
+              }`}
             >
               {line}
             </span>
@@ -117,8 +119,9 @@ export default function Middle() {
           {LINES.map((line, index) => (
             <span
               key={line}
-              className={`block ${index === LINES.length - 1 ? "italic" : ""
-                }`}
+              className={`block ${
+                index === LINES.length - 1 ? "italic" : ""
+              }`}
             >
               {line}
             </span>

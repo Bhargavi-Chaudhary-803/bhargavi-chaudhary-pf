@@ -145,7 +145,13 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="opacity-90 hover:opacity-60 transition-opacity"
+              className="opacity-90"
+              whileHover={{
+                scale: 1.12,
+                filter:
+                  "drop-shadow(0 0 4px rgba(255,255,255,0.7)) drop-shadow(0 0 12px rgba(255,255,255,0.45))",
+              }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
             >
               <Image
                 src="/1.png"
@@ -162,7 +168,13 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="opacity-90 hover:opacity-60 transition-opacity"
+              className="opacity-90"
+              whileHover={{
+                scale: 1.12,
+                filter:
+                  "drop-shadow(0 0 4px rgba(255,255,255,0.7)) drop-shadow(0 0 12px rgba(255,255,255,0.45))",
+              }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
             >
               <Image
                 src="/2.png"
@@ -177,7 +189,13 @@ export default function Hero() {
               variants={iconItem}
               href="mailto:bhargavichaudhary803@gmail.com"
               aria-label="Email"
-              className="opacity-90 hover:opacity-60 transition-opacity"
+              className="opacity-90"
+              whileHover={{
+                scale: 1.12,
+                filter:
+                  "drop-shadow(0 0 4px rgba(255,255,255,0.7)) drop-shadow(0 0 12px rgba(255,255,255,0.45))",
+              }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
             >
               <Image
                 src="/3.png"
