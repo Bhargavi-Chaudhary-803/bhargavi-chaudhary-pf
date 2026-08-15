@@ -31,17 +31,16 @@ const projects = [
     tagline: "Smart waste management, powered by vision",
     description:
       "A waste-classification platform using PyTorch and OpenCV to sort waste in real time, built to make smart-city waste management measurable instead of guesswork.",
-
     github: "https://github.com/Bhargavi-Chaudhary-803/Verdian",
     live: "https://verdian-wastesystem.vercel.app/",
     video: "/p2.mp4",
   },
   {
     title: "Manipal UniNav",
-    tagline: "A website specially designed for MUJ students to navigate through their campus with ease.",
+    tagline:
+      "A website specially designed for MUJ students to navigate through their campus with ease.",
     description:
       "UniNav is a smart campus navigation platform for MUJ students and visitors. It helps users quickly find buildings, discover the shortest routes, and explore campus facilities without getting lost",
-
     github: "https://github.com/Anmol-Srivastava-073/manipalmap",
     live: "https://manipalmap.vercel.app/",
     video: "/p3.mp4",
@@ -63,7 +62,12 @@ const TECH_ICONS = {
   Tailwind: Wind,
   Node: Server,
 };
+
 const DEFAULT_TECH_ICON = Code2;
+
+/* -------------------------------------------------------
+   SECTION ENTRY ANIMATION
+------------------------------------------------------- */
 
 const container = {
   hidden: {},
@@ -76,35 +80,56 @@ const container = {
 };
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 25 },
+  hidden: {
+    opacity: 0,
+    y: 25,
+  },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      duration: 0.7,
+      ease: [0.22, 1, 0.36, 1],
+    },
   },
 };
+
+/* -------------------------------------------------------
+   PROJECT CARDS
+   Entry only — plays once when cards enter viewport
+------------------------------------------------------- */
 
 const cardGrid = {
   hidden: {},
   show: {
     transition: {
       staggerChildren: 0.15,
+      delayChildren: 0.1,
     },
   },
 };
 
 const cardItem = {
-  hidden: { opacity: 0, y: 28, scale: 0.97 },
+  hidden: {
+    opacity: 0,
+    y: 35,
+    scale: 0.96,
+  },
+
   show: {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      duration: 0.75,
+      ease: [0.22, 1, 0.36, 1],
+    },
   },
 };
 
 function TechBadge({ label }) {
   const Icon = TECH_ICONS[label] || DEFAULT_TECH_ICON;
+
   return (
     <span className="flex items-center gap-1.5 font-inter text-[10px] uppercase tracking-wide border border-black/15 rounded-full pl-2 pr-2.5 py-0.5 text-black">
       <Icon size={11} strokeWidth={1.75} />
@@ -150,6 +175,7 @@ function ProjectCard({ project }) {
         ) : (
           <div className="w-full h-full border border-dashed border-black/15 flex flex-col items-center justify-center gap-2 text-black/30">
             <ImageOff size={20} strokeWidth={1.5} />
+
             <span className="font-inter text-[11px] tracking-wide uppercase">
               Add video
             </span>
@@ -162,6 +188,7 @@ function ProjectCard({ project }) {
         <h3 className="font-inter text-[17px] md:text-[20px] font-bold tracking-[-0.3px] md:tracking-[-0.5px] text-black">
           {project.title}
         </h3>
+
         <p className="font-inter text-[11px] md:text-[12px] text-black/40 mt-1">
           {project.tagline}
         </p>
@@ -180,6 +207,7 @@ function ProjectCard({ project }) {
           >
             <GithubIcon size={14} />
           </a>
+
           <a
             href={project.live}
             target="_blank"
@@ -202,25 +230,41 @@ export default function Projects() {
         variants={container}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={{
+          once: true,
+          amount: 0.15,
+        }}
         className="max-w-6xl mx-auto"
       >
-        <motion.div variants={fadeUp} className="flex justify-center items-baseline gap-1.5 sm:gap-3.5 md:gap-4.5">
+        {/* Heading */}
+        <motion.div
+          variants={fadeUp}
+          className="flex justify-center items-baseline gap-1.5 sm:gap-3.5 md:gap-4.5"
+        >
           <span className="font-inter text-[32px] sm:text-[54px] md:text-[85px] font-semibold tracking-[-1px] md:tracking-[-2px] text-black">
             Projects I've
           </span>
+
           <span className="font-noto text-[28px] sm:text-[47px] md:text-[80px] font-light italic leading-none tracking-[-1.5px] md:tracking-[-3px] scale-y-[1.15] origin-bottom inline-block text-black">
             Built
           </span>
         </motion.div>
-        <motion.div variants={fadeUp} className="flex justify-center gap-4.5 mt-2 md:mt-[-7px] mb-9 md:mb-14 px-3.5 text-center">
+
+        {/* Subtitle */}
+        <motion.div
+          variants={fadeUp}
+          className="flex justify-center gap-4.5 mt-2 md:mt-[-7px] mb-9 md:mb-14 px-3.5 text-center"
+        >
           <span className="font-inter text-[13.5px] sm:text-[16px] md:text-[18px] font-semibold tracking-[-0.5px] md:tracking-[-1px] text-black">
             My Production-ready projects that solve real problems.
           </span>
         </motion.div>
 
-        {/* Grid */}
-        <motion.div variants={cardGrid} className="grid grid-cols-1 md:grid-cols-3 gap-4.5 md:gap-7">
+        {/* Project Grid */}
+        <motion.div
+          variants={cardGrid}
+          className="grid grid-cols-1 md:grid-cols-3 gap-4.5 md:gap-7"
+        >
           {projects.map((project) => (
             <ProjectCard key={project.title} project={project} />
           ))}
